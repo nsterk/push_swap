@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/22 17:50:39 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/07/01 17:41:01 by nsterk        ########   odam.nl         */
+/*   Updated: 2021/07/01 18:02:47 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,12 @@ void	free_stack(t_stack **stack);
 */
 
 int		swap(t_stack **stack);
-t_stack	**push(t_stack **from, t_stack **to);
+void	push(t_stack **from, t_stack **to);
 /*
 **	Utils
 */
 
+int		is_sorted(t_stack *stack);
 void	exit_error(void);
 void	exit_programme(int status, t_stack **a, t_stack **b);
 

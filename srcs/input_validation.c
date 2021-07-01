@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/22 19:17:06 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/06/29 15:47:45 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/07/01 18:04:09 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ t_stack	*validate_input(int argc, char **argv)
 		stack_add_back(&stack_a, stack_new(num));
 		i++;
 	}
+	if (is_sorted(stack_a))
+		exit_programme(0, &stack_a, NULL);
 	return (stack_a);
 }
 
@@ -43,7 +45,7 @@ int	check_bounds(char *str, size_t len, t_stack **stack)
 	i = 0;
 	num = ft_atoi(str);
 	if (num == 0 && len > 1)
-		exit_programme();
+		exit_programme(1, stack, NULL);
 	return (num);
 }
 

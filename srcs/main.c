@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/22 17:50:09 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/06/29 16:30:20 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/07/01 17:43:14 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	main(int argc, char **argv)
 {
-	t_stacks	*stacks;
 	t_stack		*stack_a;
 	t_stack		*next;
 
