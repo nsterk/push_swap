@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/22 17:50:39 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/07/08 13:59:51 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/07/09 13:45:47 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,12 @@ int		is_integer(char *str, size_t len);
 void	check_duplicates(t_stack **head, int num);
 
 /*
+**	TESTING PURPOSES
+*/
+void	swap_operations(t_stack **stack_a, t_stack **stack_b);
+void	printf_list(t_stack **stack_a, t_stack **stack_b, char *colour);
+
+/*
 ** Stack handling
 */
 
@@ -56,11 +62,13 @@ void	free_stack(t_stack **stack);
 **	Operations
 */
 
-void	swap(t_stack **stack);
-void	fork_swap(t_stack **stack_a, t_stack **stack_b, char *cmd);
+void	do_swap(t_stack **stack);
+void	swap(t_stack **stack_a, t_stack **stack_b, char *cmd);
 void	push(t_stack **stack_a, t_stack **stack_b, char *cmd);
-void	rotate(t_stack **stack);
-void	reverse_rotate(t_stack **stack);
+void	reverse_rotate(t_stack **stack_a, t_stack **stack_b, char *cmd);
+void	rotate(t_stack **stack_a, t_stack **stack_b, char *cmd);
+void	do_rotate(t_stack **stack);
+void	do_reverse_rotate(t_stack **stack);
 t_stack	*pop_back(t_stack **stack);
 t_stack	*pop_front(t_stack **stack);
 void	push_back(t_stack **stack, t_stack *new);
