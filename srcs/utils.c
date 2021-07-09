@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/22 19:22:56 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/07/01 18:02:13 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/07/08 16:49:43 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,19 @@ int	is_sorted(t_stack *stack)
 		temp = temp->next;
 	}
 	return (1);
+}
+
+void	print_list(t_stack **stack)
+{
+	t_stack	*temp;
+
+	temp = *stack;
+	while (temp != NULL)
+	{
+		if (temp->next != NULL)
+			printf("%i, ", (temp)->num);
+		else
+			printf("%i", (temp)->num);
+		temp = (temp)->next;
+	}
 }

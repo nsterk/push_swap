@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/27 11:00:39 by nsterk        #+#    #+#                 */
-/*   Updated: 2021/06/22 17:39:21 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/07/06 16:51:32 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void				ft_putnbr_fd(int n, int fd);
 void				ft_putstr_fd(char *s, int fd);
 char				**ft_split(char const *s, char c);
 char				*ft_strchr(const char *s, int c);
+int					ft_strcmp(char *s1, char *s2);
 char				*ft_strdup(const char *src);
 char				*ft_strjoin(char const *s1, char const *s2);
 size_t				ft_strlcat(char *dst, const char *src, size_t size);

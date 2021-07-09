@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/22 17:50:39 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/07/01 18:02:47 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/07/08 13:59:51 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define PUSH_SWAP_H
 
 # include <stdlib.h>
-// # include <get_next_line.h>
 # include <libft.h>
+# include <colours.h>
 
 /*
 **	includes to be removed at later stage: 
@@ -56,8 +56,16 @@ void	free_stack(t_stack **stack);
 **	Operations
 */
 
-int		swap(t_stack **stack);
-void	push(t_stack **from, t_stack **to);
+void	swap(t_stack **stack);
+void	fork_swap(t_stack **stack_a, t_stack **stack_b, char *cmd);
+void	push(t_stack **stack_a, t_stack **stack_b, char *cmd);
+void	rotate(t_stack **stack);
+void	reverse_rotate(t_stack **stack);
+t_stack	*pop_back(t_stack **stack);
+t_stack	*pop_front(t_stack **stack);
+void	push_back(t_stack **stack, t_stack *new);
+void	push_front(t_stack **stack, t_stack *new);
+
 /*
 **	Utils
 */
@@ -66,4 +74,5 @@ int		is_sorted(t_stack *stack);
 void	exit_error(void);
 void	exit_programme(int status, t_stack **a, t_stack **b);
 
+void	print_list(t_stack **stack);
 #endif
