@@ -6,7 +6,7 @@
 #    By: naomisterk <naomisterk@student.codam.nl      +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/06/22 14:26:50 by naomisterk    #+#    #+#                  #
-#    Updated: 2021/07/09 13:47:38 by nsterk        ########   odam.nl          #
+#    Updated: 2021/07/14 17:36:55 by naomisterk    ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ TEST_PATH	=	./srcs/test/
 
 MAIN_C		=	gnl/get_next_line.c gnl/get_next_line_utils.c \
 				main.c input_validation.c utils.c operations.c \
-				stack_pop.c stack_push.c operations_utils.c
+				stack_pop.c stack_push.c operations_utils.c \
+				list_descriptive.c sort.c
 STACK_C		=	stack_handling.c
 TEST_C		=	operations.c
 STACK_SRCS	=	$(STACK_C:%=$(STACK_PATH)%)

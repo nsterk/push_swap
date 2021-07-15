@@ -6,13 +6,13 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/07/09 10:42:51 by nsterk        #+#    #+#                 */
-/*   Updated: 2021/07/09 10:51:22 by nsterk        ########   odam.nl         */
+/*   Updated: 2021/07/14 23:08:31 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-void	do_swap(t_stack **stack)
+void	do_swap(t_stack **stack, int *operations)
 {
 	int	temp;
 
@@ -21,6 +21,7 @@ void	do_swap(t_stack **stack)
 	temp = (*stack)->num;
 	(*stack)->num = (*stack)->next->num;
 	(*stack)->next->num = temp;
+	(*operations)++
 }
 
 void	do_rotate(t_stack **stack)
