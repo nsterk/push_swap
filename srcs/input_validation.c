@@ -6,13 +6,13 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/22 19:17:06 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/07/15 15:26:26 by nsterk        ########   odam.nl         */
+/*   Updated: 2021/07/15 16:00:35 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-void	validate_input(int argc, char **argv, t_stack **stack_a)
+void	validate_input(int argc, char **argv, t_stacks *stacks)
 {
 	int		i;
 	int		num;
@@ -25,16 +25,16 @@ void	validate_input(int argc, char **argv, t_stack **stack_a)
 	{
 		arg_len = ft_strlen(argv[i]);
 		is_integer(argv[i], arg_len);
-		num = check_bounds(argv[i], arg_len, stack_a);
-		check_duplicates(stack_a, num);
-		stack_add_back(stack_a, stack_new(num));
+		num = check_bounds(argv[i], arg_len, stacks);
+		check_duplicates(&stacks->a, num);
+		stack_add_back(&stacks->a, stack_new(num));
 		i++;
 	}
-	if (is_sorted(*stack_a))
-		exit_programme(0, stack_a, NULL);
+	if (is_sorted(stacks->a))
+		exit_programme(0, stacks);
 }
 
-int	check_bounds(char *str, size_t len, t_stack **stack)
+int	check_bounds(char *str, size_t len, t_stacks *stacks)
 {
 	int		num;
 	int		i;
@@ -42,7 +42,7 @@ int	check_bounds(char *str, size_t len, t_stack **stack)
 	i = 0;
 	num = ft_atoi(str);
 	if (num == 0 && len > 1)
-		exit_programme(1, stack, NULL);
+		exit_programme(1, stacks);
 	return (num);
 }
 

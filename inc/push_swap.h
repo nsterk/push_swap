@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/22 17:50:39 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/07/15 15:25:30 by nsterk        ########   odam.nl         */
+/*   Updated: 2021/07/15 16:00:47 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,25 +33,25 @@ typedef struct s_stacks
 	t_stack	*a;
 	t_stack	*b;
 	int		size;
-	int		ops;
+	int		operations;
 }				t_stacks;
 
 /*
 **	Input validation
 */
-void	validate_input(int argc, char **argv, t_stack **stack_a);
-int		check_bounds(char *str, size_t len, t_stack **stack);
+void	validate_input(int argc, char **argv, t_stacks *stacks);
+int		check_bounds(char *str, size_t len, t_stacks *stacks);
 int		is_integer(char *str, size_t len);
 void	check_duplicates(t_stack **head, int num);
 
 /*
 **	TESTING PURPOSES
 */
-void	swap_operations(t_stack **stack_a, t_stack **stack_b);
-void	push_operations(t_stack **stack_a, t_stack **stack_b);
-void	rotation_operations(t_stack **stack_a, t_stack **stack_b);
-void	rev_rotation_operations(t_stack **stack_a, t_stack **stack_b);
-void	printf_list(t_stack **stack_a, t_stack **stack_b, char *colour);
+void	swap_operations(t_stacks *stacks);
+void	push_operations(t_stacks *stacks);
+void	rotation_operations(t_stacks *stacks);
+void	rev_rotation_operations(t_stacks *stacks);
+void	printf_list(t_stacks *stack, char *colour);
 
 /*
 ** Stack handling
@@ -68,12 +68,12 @@ void	free_stack(t_stack **stack);
 */
 
 void	do_swap(t_stack **stack, int *operations);
-void	swap(t_stack **stack_a, t_stack **stack_b, char *cmd);
-void	push(t_stack **stack_a, t_stack **stack_b, char *cmd);
-void	reverse_rotate(t_stack **stack_a, t_stack **stack_b, char *cmd);
-void	rotate(t_stack **stack_a, t_stack **stack_b, char *cmd);
-void	do_rotate(t_stack **stack);
-void	do_reverse_rotate(t_stack **stack);
+void	swap(t_stacks *stacks, char *cmd);
+void	push(t_stacks *stacks, char *cmd);
+void	reverse_rotate(t_stacks *stacks, char *cmd);
+void	rotate(t_stacks *stacks, char *cmd);
+void	do_rotate(t_stack **stack, int *operations);
+void	do_reverse_rotate(t_stack **stack, int *operations);
 t_stack	*pop_back(t_stack **stack);
 t_stack	*pop_front(t_stack **stack);
 void	push_back(t_stack **stack, t_stack *new);
@@ -83,12 +83,12 @@ void	push_front(t_stack **stack, t_stack *new);
 **	Sorting
 */
 
-void	sort_three(t_stack **stack);
+//void	sort_three(t_stack **stack);
 
 /*
 **	Utils
 */
-
+void	init_stacks(t_stacks *stacks);
 void	exit_error(void);
 void	exit_programme(int status, t_stacks *stacks);
 
