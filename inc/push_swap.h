@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/22 17:50:39 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/07/15 12:10:49 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/07/15 15:25:30 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct s_stacks
 /*
 **	Input validation
 */
-t_stack	*validate_input(int argc, char **argv);
+void	validate_input(int argc, char **argv, t_stack **stack_a);
 int		check_bounds(char *str, size_t len, t_stack **stack);
 int		is_integer(char *str, size_t len);
 void	check_duplicates(t_stack **head, int num);

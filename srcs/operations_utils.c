@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/07/09 10:42:51 by nsterk        #+#    #+#                 */
-/*   Updated: 2021/07/14 23:08:31 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/07/15 15:32:49 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,26 @@ void	do_swap(t_stack **stack, int *operations)
 {
 	int	temp;
 
-	if (!(*stack) || !(*stack)->next)
+	if (!stack || *stack == NULL || (*stack)->next == NULL)
 		return ;
 	temp = (*stack)->num;
 	(*stack)->num = (*stack)->next->num;
 	(*stack)->next->num = temp;
-	(*operations)++
+	*operations++;
 }
 
-void	do_rotate(t_stack **stack)
+void	do_rotate(t_stack **stack, int *operations)
 {
-	if (!stack || *stack == NULL)
+	if (!stack || *stack == NULL || (*stack)->next == NULL)
 		return ;
 	push_back(stack, pop_front(stack));
+	*operations++;
 }
 
-void	do_reverse_rotate(t_stack **stack)
+void	do_reverse_rotate(t_stack **stack, int *operations)
 {
-	if (!stack || *stack == NULL)
+	if (!stack || *stack == NULL || (*stack)->next == NULL)
 		return ;
 	push_front(stack, pop_back(stack));
+	*operations++;
 }

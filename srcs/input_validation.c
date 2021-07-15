@@ -6,15 +6,14 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/22 19:17:06 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/07/13 12:52:09 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/07/15 15:26:26 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-t_stack	*validate_input(int argc, char **argv)
+void	validate_input(int argc, char **argv, t_stack **stack_a)
 {
-	t_stack	*stack_a;
 	int		i;
 	int		num;
 	size_t	arg_len;
@@ -22,19 +21,17 @@ t_stack	*validate_input(int argc, char **argv)
 	if (argc < 2)
 		exit_error();
 	i = 1;
-	stack_a = NULL;
 	while (i < argc)
 	{
 		arg_len = ft_strlen(argv[i]);
 		is_integer(argv[i], arg_len);
-		num = check_bounds(argv[i], arg_len, &stack_a);
-		check_duplicates(&stack_a, num);
-		stack_add_back(&stack_a, stack_new(num));
+		num = check_bounds(argv[i], arg_len, stack_a);
+		check_duplicates(stack_a, num);
+		stack_add_back(stack_a, stack_new(num));
 		i++;
 	}
-	if (is_sorted(stack_a))
-		exit_programme(0, &stack_a, NULL);
-	return (stack_a);
+	if (is_sorted(*stack_a))
+		exit_programme(0, stack_a, NULL);
 }
 
 int	check_bounds(char *str, size_t len, t_stack **stack)
