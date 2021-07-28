@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/22 17:50:39 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/07/15 16:00:47 by nsterk        ########   odam.nl         */
+/*   Updated: 2021/07/28 02:41:04 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include <stdlib.h>
+# include <unistd.h>
 # include <libft.h>
 # include <colours.h>
 
@@ -25,6 +26,7 @@
 typedef struct s_stack
 {
 	int				num;
+	int				i;
 	struct s_stack	*next;
 }				t_stack;
 
@@ -32,8 +34,12 @@ typedef struct s_stacks
 {
 	t_stack	*a;
 	t_stack	*b;
-	int		size;
-	int		operations;
+	size_t	size;
+	size_t	len_a;
+	size_t	len_b;
+	int		mid_a;
+	int		mid_b;
+	int		ops;
 }				t_stacks;
 
 /*
@@ -67,23 +73,29 @@ void	free_stack(t_stack **stack);
 **	Operations
 */
 
-void	do_swap(t_stack **stack, int *operations);
+size_t	do_swap(t_stack **stack);
 void	swap(t_stacks *stacks, char *cmd);
 void	push(t_stacks *stacks, char *cmd);
 void	reverse_rotate(t_stacks *stacks, char *cmd);
 void	rotate(t_stacks *stacks, char *cmd);
-void	do_rotate(t_stack **stack, int *operations);
-void	do_reverse_rotate(t_stack **stack, int *operations);
+size_t	do_rotate(t_stack **stack);
+size_t	do_reverse_rotate(t_stack **stack);
 t_stack	*pop_back(t_stack **stack);
 t_stack	*pop_front(t_stack **stack);
 void	push_back(t_stack **stack, t_stack *new);
 void	push_front(t_stack **stack, t_stack *new);
 
+void	reverse_rotate_count(t_stacks *stacks, size_t count, char *cmd);
+size_t	rotate_count(t_stacks *stacks, size_t count, char *cmd);
+
 /*
 **	Sorting
 */
 
-//void	sort_three(t_stack **stack);
+void	sort_three(t_stacks *stacks);
+void	sort_to_five(t_stacks *stacks);
+void	sort_large(t_stacks *stacks);
+void	a_to_b(t_stacks *stacks);
 
 /*
 **	Utils
@@ -91,12 +103,15 @@ void	push_front(t_stack **stack, t_stack *new);
 void	init_stacks(t_stacks *stacks);
 void	exit_error(void);
 void	exit_programme(int status, t_stacks *stacks);
+void	write_command(char *cmd, int *ops);
+void	index_stack(t_stack **stack);
+t_stack	*get_node(t_stack **stack, int i);
 
 /*
 **	Utils: list descriptions
 */
 void	print_list(t_stack **stack);
-int		list_size(t_stack *stack);
+size_t	list_size(t_stack *stack);
 int		is_sorted(t_stack *stack);
 
 #endif

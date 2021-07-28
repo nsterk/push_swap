@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/22 19:17:06 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/07/15 16:00:35 by nsterk        ########   odam.nl         */
+/*   Updated: 2021/07/21 17:37:10 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	validate_input(int argc, char **argv, t_stacks *stacks)
 	}
 	if (is_sorted(stacks->a))
 		exit_programme(0, stacks);
+	stacks->size = list_size(stacks->a);
+	stacks->len_a = stacks->size;
 }
 
 int	check_bounds(char *str, size_t len, t_stacks *stacks)

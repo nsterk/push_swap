@@ -6,11 +6,12 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/07/13 17:42:02 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/07/13 18:01:58 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/07/27 18:02:34 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
+#include <colours.h>
 
 void	print_list(t_stack **stack)
 {
@@ -20,11 +21,21 @@ void	print_list(t_stack **stack)
 	while (temp != NULL)
 	{
 		if (temp->next != NULL)
-			printf("%i, ", (temp)->num);
+			printf("num: %i, ", (temp)->num);
 		else
-			printf("%i", (temp)->num);
+			printf("num: %i", (temp)->num);
 		temp = (temp)->next;
 	}
+}
+
+void	printf_list(t_stacks *stacks, char *colour)
+{
+	printf("%s\n", colour);
+	printf("%-27s%-25s\n"RST, "Stack A", "Stack B");
+	print_list(&stacks->a);
+	printf("          ");
+	print_list(&stacks->b);
+	printf("\n");
 }
 
 int	is_sorted(t_stack *stack)
@@ -41,14 +52,15 @@ int	is_sorted(t_stack *stack)
 	return (1);
 }
 
-int	list_size(t_stack *stack)
+size_t	list_size(t_stack *stack)
 {
-	int		size;
+	size_t	size;
 	t_stack	*tmp;
 
-	size = 1;
+	size = 0;
 	if (stack)
 	{
+		size = 1;
 		tmp = stack;
 		while (tmp->next != NULL)
 		{

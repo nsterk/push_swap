@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/29 03:49:25 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/06/29 04:53:11 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/07/27 16:37:54 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_stack	*stack_new(int num)
 	if (!new)
 		return (NULL);
 	new->num = num;
+	new->i = 0;
 	new->next = NULL;
 	return (new);
 }
