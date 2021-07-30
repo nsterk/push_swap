@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/07/14 17:40:48 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/07/28 03:25:35 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/07/28 14:44:50 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ void	a_to_b(t_stacks *stacks)
 		index_stack(&stacks->a);
 		mid = (int)stacks->len_a / 2 + 1;
 		stacks->mid_a = (get_node(&stacks->a, mid))->num;
-		// stacks->mid_a = stacks->len_a / 2;
 		pushed = 0;
 		while (pushed < mid)
 		{

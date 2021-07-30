@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/07/09 10:42:51 by nsterk        #+#    #+#                 */
-/*   Updated: 2021/07/27 18:04:49 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/07/30 13:15:09 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,6 @@ size_t	rotate_count(t_stacks *stacks, size_t count, char *cmd)
 		count--;
 	}
 	return (0);
-}
-
-void	reverse_rotate_count(t_stacks *stacks, size_t count, char *cmd)
-{
-	while (count > 0)
-	{
-		reverse_rotate(stacks, cmd);
-		count--;
-	}
 }
 
 void	write_command(char *cmd, int *ops)

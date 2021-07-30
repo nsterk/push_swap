@@ -6,7 +6,7 @@
 #    By: naomisterk <naomisterk@student.codam.nl      +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/06/22 14:26:50 by naomisterk    #+#    #+#                  #
-#    Updated: 2021/07/27 17:13:56 by naomisterk    ########   odam.nl          #
+#    Updated: 2021/07/30 13:34:33 by naomisterk    ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,18 +16,17 @@ CC			=	gcc
 FLAGS		=	-Wall -Wextra -g -fsanitize=address
 MAIN_PATH	=	./srcs/
 STACK_PATH	=	./srcs/stack/
-TEST_PATH	=	./srcs/test/
+GNL_PATH	=	./srcs/gnl/
 
-MAIN_C		=	gnl/get_next_line.c gnl/get_next_line_utils.c \
-				main.c input_validation.c utils.c operations.c \
-				stack_pop.c stack_push.c operations_utils.c \
-				list_descriptive.c sort.c
-STACK_C		=	stack_handling.c
-# TEST_C		=	operations.c
+MAIN_C		=	main.c input_validation.c utils.c operations.c \
+				operations_utils.c list_descriptive.c sort.c
+STACK_C		=	stack_handling.c stack_pop.c stack_push.c
+GNL_C		=	get_next_line.c get_next_line_utils.c
+
 STACK_SRCS	=	$(STACK_C:%=$(STACK_PATH)%)
-MAIN_SRCS	=	$(MAIN_C:%=$(MAIN_PATH)%) 
-# TEST_SRCS	=	$(TEST_C:%=$(TEST_PATH)%)
-SRCS		=	$(MAIN_SRCS) $(STACK_SRCS) # $(TEST_SRCS)
+MAIN_SRCS	=	$(MAIN_C:%=$(MAIN_PATH)%)
+GNL_SRCS	=	$(GNL_C:%=$(GNL_PATH)%)
+SRCS		=	$(MAIN_SRCS) $(STACK_SRCS) # $(GNL_SRCS)
 OBJS		=	$(SRCS:%.c=%.o)
 
 # ifdef DEBUG

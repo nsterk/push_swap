@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/22 17:50:39 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/07/28 02:41:04 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/07/30 13:16:18 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,7 @@ void	check_duplicates(t_stack **head, int num);
 /*
 **	TESTING PURPOSES
 */
-void	swap_operations(t_stacks *stacks);
-void	push_operations(t_stacks *stacks);
-void	rotation_operations(t_stacks *stacks);
-void	rev_rotation_operations(t_stacks *stacks);
+
 void	printf_list(t_stacks *stack, char *colour);
 
 /*
@@ -85,7 +82,6 @@ t_stack	*pop_front(t_stack **stack);
 void	push_back(t_stack **stack, t_stack *new);
 void	push_front(t_stack **stack, t_stack *new);
 
-void	reverse_rotate_count(t_stacks *stacks, size_t count, char *cmd);
 size_t	rotate_count(t_stacks *stacks, size_t count, char *cmd);
 
 /*
