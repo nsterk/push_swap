@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/22 19:22:56 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/07/27 17:55:32 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/08/01 14:36:38 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	init_stacks(t_stacks *stacks)
 {
 	stacks->a = NULL;
 	stacks->b = NULL;
+	stacks->copy = NULL;
 	stacks->size = 0;
 	stacks->len_a = 0;
 	stacks->len_b = 0;
@@ -42,21 +43,6 @@ void	exit_error(void)
 	write(2, "Error\n", 6);
 	system("leaks push_swap");
 	exit(1);
-}
-
-void	index_stack(t_stack **stack)
-{
-	size_t	i;
-	t_stack	*tmp;
-
-	i = 0;
-	tmp = *stack;
-	while (tmp)
-	{
-		tmp->i = i;
-		i++;
-		tmp = tmp->next;
-	}
 }
 
 t_stack	*get_node(t_stack **stack, int i)

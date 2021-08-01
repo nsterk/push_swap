@@ -9,9 +9,9 @@
 		{
 			"type": "lldb",
 			"request": "launch",
-			"name": "Debug",
+			"name": "Debug large 2",
 			"program": "${workspaceFolder}/push_swap",
-			"args": ["3", "6", "9", "7", "1"],
+			"args": ["3", "6", "9", "7", "1", "8", "11"],
 			"cwd": "${workspaceFolder}"
 		}
 		{
