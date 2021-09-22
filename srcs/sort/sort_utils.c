@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/01 12:14:44 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/08/01 14:49:33 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/08/12 17:35:49 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	get_mid(t_stack *stack)
 	sum = 0;
 	while (tmp)
 	{
-		sum += tmp->i;
+		sum += tmp->pos;
 		total++;
 		tmp = tmp->next;
 	}

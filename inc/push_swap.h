@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/22 17:50:39 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/08/01 14:42:35 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/08/19 22:10:47 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_stacks
 	int		mid_a;
 	int		mid_b;
 	int		ops;
+	int		*pivots;
 }				t_stacks;
 
 /*

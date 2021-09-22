@@ -6,14 +6,14 @@
 #    By: naomisterk <naomisterk@student.codam.nl      +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/06/22 14:26:50 by naomisterk    #+#    #+#                  #
-#    Updated: 2021/08/01 12:48:28 by naomisterk    ########   odam.nl          #
+#    Updated: 2021/09/10 18:54:02 by naomisterk    ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 # add -Werror to flags & remove -g (ook bij libft)
 NAME		=	push_swap
 CC			=	gcc
-FLAGS		=	-Wall -Wextra -g -fsanitize=address
+FLAGS		=	-Wall -Wextra -fsanitize=address
 MAIN_PATH	=	./srcs/
 STACK_PATH	=	./srcs/stack/
 GNL_PATH	=	./srcs/gnl/
@@ -38,15 +38,15 @@ OPS_SRCS	=	$(OPS_C:%=$(OPS_PATH)%)
 SRCS		=	$(MAIN_SRCS) $(STACK_SRCS) $(SORT_SRCS) $(UTILS_SRCS) $(OPS_SRCS) # $(GNL_SRCS)
 OBJS		=	$(SRCS:%.c=%.o)
 
-# ifdef DEBUG
-# FLAGS	= -g
-# else
-# FLAGS	= $(W_FLAGS)
-# endif
+FLAGS		= $(W_FLAGS)
 
-# ifdef F_SANITIZE
-# FLAGS += -fsanitize=address
-# endif
+ifdef DEBUG
+FLAGS	+= -g
+endif
+
+ifdef F_SANITIZE
+FLAGS += -fsanitize=address
+endif
 
 all: $(NAME)
 

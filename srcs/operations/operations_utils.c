@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/07/09 10:42:51 by nsterk        #+#    #+#                 */
-/*   Updated: 2021/07/30 13:15:09 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/08/18 15:09:59 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,6 @@ size_t	rotate_count(t_stacks *stacks, size_t count, char *cmd)
 void	write_command(char *cmd, int *ops)
 {
 	write(1, cmd, ft_strlen(cmd));
-	write(1, " ", 1);
+	write(1, "\n", 1);
 	(*ops)++;
 }

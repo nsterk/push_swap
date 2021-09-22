@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/07/14 17:40:48 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/08/01 14:55:11 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/08/18 15:07:17 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ void	a_to_b(t_stacks *stacks)
 	{
 		index_stack(stacks->a);
 		mid = (int)stacks->len_a / 2;
-		//stacks->mid_a = get_mid(stacks->a);
-		stacks->mid_a = (get_node(&stacks->a, mid))->pos;
+		stacks->mid_a = get_mid(stacks->a);
+		// stacks->mid_a = (get_node(&stacks->a, mid))->pos;
 		pushed = 0;
 		while (pushed < mid)
 		{
@@ -99,7 +99,7 @@ void	a_to_b(t_stacks *stacks)
 		}
 		stacks->len_a = list_size(stacks->a);
 	}
-	if (stacks->a > stacks->a->next)
+	if (stacks->a->next != NULL && stacks->a->pos >= stacks->a->next->pos)
 		swap(stacks, "sa");
 }
 
@@ -110,12 +110,13 @@ void	b_to_a(t_stacks *stacks)
 	size_t	i;
 
 	stacks->len_b = list_size(stacks->b);
-	while (stacks->len_b > 2)
+	// print_list(&stacks->b);
+	while (stacks->len_b > 1)
 	{
 		index_stack(stacks->b);
 		mid = (int)stacks->len_b / 2;
-		//stacks->mid_a = get_mid(stacks->a);
-		stacks->mid_b = (get_node(&stacks->b, mid))->pos;
+		stacks->mid_b = get_mid(stacks->b);
+		// stacks->mid_b = (get_node(&stacks->b, mid))->pos;
 		pushed = 0;
 		while (pushed < mid)
 		{
@@ -135,9 +136,6 @@ void	b_to_a(t_stacks *stacks)
 		}
 		stacks->len_b = list_size(stacks->b);
 	}
-	if (stacks->b->pos < stacks->b->next->pos)
-		swap(stacks, "sb");
-	push(stacks, "pa");
 	push(stacks, "pa");
 }
 
