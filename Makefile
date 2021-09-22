@@ -6,7 +6,7 @@
 #    By: naomisterk <naomisterk@student.codam.nl      +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/06/22 14:26:50 by naomisterk    #+#    #+#                  #
-#    Updated: 2021/09/10 18:54:02 by naomisterk    ########   odam.nl          #
+#    Updated: 2021/09/22 13:29:12 by nsterk        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ OPS_PATH	=	./srcs/operations/
 MAIN_C		=	main.c input_validation.c list_descriptive.c
 STACK_C		=	stack_handling.c stack_pop.c stack_push.c \
 				stack_utils.c
-SORT_C		=	sort_utils.c sort.c
+SORT_C		=	sort_utils.c sort.c pivots.c
 OPS_C		=	operations.c operations_utils.c
 UTILS_C		=	utils.c
 GNL_C		=	get_next_line.c get_next_line_utils.c
