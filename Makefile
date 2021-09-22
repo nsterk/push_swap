@@ -6,14 +6,14 @@
 #    By: naomisterk <naomisterk@student.codam.nl      +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/06/22 14:26:50 by naomisterk    #+#    #+#                  #
-#    Updated: 2021/09/22 13:29:12 by nsterk        ########   odam.nl          #
+#    Updated: 2021/09/22 15:55:39 by naomisterk    ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 # add -Werror to flags & remove -g (ook bij libft)
 NAME		=	push_swap
 CC			=	gcc
-FLAGS		=	-Wall -Wextra -fsanitize=address
+FLAGS		=	-Wall -Wextra -fsanitize=address -g
 MAIN_PATH	=	./srcs/
 STACK_PATH	=	./srcs/stack/
 GNL_PATH	=	./srcs/gnl/
@@ -24,7 +24,7 @@ OPS_PATH	=	./srcs/operations/
 MAIN_C		=	main.c input_validation.c list_descriptive.c
 STACK_C		=	stack_handling.c stack_pop.c stack_push.c \
 				stack_utils.c
-SORT_C		=	sort_utils.c sort.c pivots.c
+SORT_C		=	sort_utils.c sort_large.c sort_small.c pivots.c
 OPS_C		=	operations.c operations_utils.c
 UTILS_C		=	utils.c
 GNL_C		=	get_next_line.c get_next_line_utils.c
@@ -38,7 +38,7 @@ OPS_SRCS	=	$(OPS_C:%=$(OPS_PATH)%)
 SRCS		=	$(MAIN_SRCS) $(STACK_SRCS) $(SORT_SRCS) $(UTILS_SRCS) $(OPS_SRCS) # $(GNL_SRCS)
 OBJS		=	$(SRCS:%.c=%.o)
 
-FLAGS		= $(W_FLAGS)
+# FLAGS		= $(W_FLAGS)
 
 ifdef DEBUG
 FLAGS	+= -g

@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/22 17:50:39 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/09/22 13:34:30 by nsterk        ########   odam.nl         */
+/*   Updated: 2021/09/22 15:47:16 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ int		make_pivots(t_stacks *stacks, int nr);
 
 void	sort_three(t_stacks *stacks);
 void	sort_to_five(t_stacks *stacks);
+void	sort_to_seven(t_stacks *stacks);
 void	sort_large(t_stacks *stacks);
 void	a_to_b(t_stacks *stacks);
 void	b_to_a(t_stacks *stacks);

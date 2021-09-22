@@ -6,12 +6,12 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/07/14 17:40:48 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/08/18 15:07:17 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/09/22 15:55:25 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
-
+/*
 void	sort_three(t_stacks *stacks)
 {
 	if (is_sorted(stacks->a))
@@ -67,7 +67,7 @@ void	sort_to_five(t_stacks *stacks)
 		}
 	}
 }
-
+*/
 void	a_to_b(t_stacks *stacks)
 {
 	int		pushed;
@@ -141,6 +141,7 @@ void	b_to_a(t_stacks *stacks)
 
 void	sort_large(t_stacks *stacks)
 {
+	get_pivots(stacks);
 	a_to_b(stacks);
 	b_to_a(stacks);
 	return ;
