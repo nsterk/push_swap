@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/09/22 15:48:08 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/06 19:11:49 by nsterk        ########   odam.nl         */
+/*   Updated: 2021/10/06 21:29:19 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	sort_three(t_stacks *stacks)
 		return ;
 	if (stacks->a->next->num > stacks->a->num)
 	{
-		reverse_rotate(stack->a, "rra", &stacks->ops, 1);
+		reverse_rotate(stacks->a, "rra", &stacks->ops, 1);
 		if (stacks->a->num > stacks->a->next->num)
 			swap(stacks->a, "sa", &stacks->ops);
 		return ;
@@ -36,6 +36,7 @@ void	sort_three(t_stacks *stacks)
 void	sort_to_five(t_stacks *stacks)
 {
 	int	rots;
+	int	mid;
 
 	while (list_size(stacks->a) > 3)
 		push(stacks, "pb", 1);
@@ -44,8 +45,8 @@ void	sort_to_five(t_stacks *stacks)
 	{
 		rots = 0;
 		index_stack(stacks->a);
-		stacks->mid_a = (get_node(&stacks->a, list_size(stacks->a) / 2))->num;
-		if (stacks->b->num < stacks->mid_a)
+		mid = (get_node(&stacks->a, list_size(stacks->a) / 2))->num;
+		if (stacks->b->num < mid)
 		{
 			while (stacks->b->num > stacks->a->num)
 			{
@@ -71,6 +72,6 @@ void	sort_to_five(t_stacks *stacks)
 void	sort_to_seven(t_stacks *stacks)
 {
 	while (list_size(stacks->a) > 5)
-		push(stacks, "pb");
+		push(stacks, "pb", 1);
 	sort_to_five(stacks);
 }

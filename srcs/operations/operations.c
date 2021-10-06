@@ -6,17 +6,17 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/30 17:09:21 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/06 19:13:00 by nsterk        ########   odam.nl         */
+/*   Updated: 2021/10/06 21:26:56 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-void	swap(t_stacks *stack, char *cmd, int *ops)
+void	swap(t_stack *stack, char *cmd, int *ops)
 {
 	t_stack	*tmp;
 
-	if (!stack || *stack == NULL || (*stack)->next == NULL)
+	if (!stack || stack->next == NULL)
 		return ;
 	tmp = stack;
 	stack->num = stack->next->num;
@@ -60,19 +60,19 @@ void	rotate(t_stack *stack, char *cmd, int *ops, int count)
 		return ;
 	while (count > 0)
 	{
-		push_back(stack, pop_front(stack));
+		push_back(&stack, pop_front(&stack));
 		write_command(cmd, ops);
 		count--;
 	}
 }
 
-void	reverse_rotate(t_stacks *stack, char *cmd, int *ops, int count)
+void	reverse_rotate(t_stack *stack, char *cmd, int *ops, int count)
 {
 	if (!stack || stack->next == NULL)
 		return ;
 	while (count > 0)
 	{
-		push_front(stack, pop_back(stack));
+		push_front(&stack, pop_back(&stack));
 		write_command(cmd, ops);
 		count--;
 	}

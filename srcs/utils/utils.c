@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/22 19:22:56 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/06 19:15:57 by nsterk        ########   odam.nl         */
+/*   Updated: 2021/10/06 20:42:01 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void	init_stacks(t_stacks *stacks)
 	stacks->copy = NULL;
 	stacks->size = 0;
 	stacks->ops = 0;
-	stacks->chunks = 0;
+	stacks->chunks = -1;
+	stacks->unsorted = -1;
 }
 
 void	exit_programme(int status, t_stacks *stacks)

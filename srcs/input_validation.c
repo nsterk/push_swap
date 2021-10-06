@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/22 19:17:06 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/06 19:04:41 by nsterk        ########   odam.nl         */
+/*   Updated: 2021/10/06 21:13:46 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	validate_input(int argc, char **argv, t_stacks *stacks)
 	if (is_sorted(stacks->a))
 		exit_programme(0, stacks);
 	stacks->size = list_size(stacks->a);
-	stacks->len_a = stacks->size;
 	get_index(stacks);
 	// selection_sort(stacks->copy);
 	// index_stack(&stacks->copy);

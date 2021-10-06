@@ -6,12 +6,131 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/07/14 17:40:48 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/06 19:17:50 by nsterk        ########   odam.nl         */
+/*   Updated: 2021/10/06 21:28:57 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
+void	sort_large(t_stacks *stacks)
+{
+	stacks->unsorted = (int)stacks->size;
+	push_a_to_b(stacks, 1);
+	while (stacks->b)
+	{
+		push_b_to_a(stacks);
+		push_a_to_b(stacks, 0);
+	}
+	return ;
+}
+
+void	push_a_to_b(t_stacks *stacks, int initial)
+{
+	while (stacks->unsorted > 2)
+	{
+		stacks->chunks++;
+		if (initial)
+			initial_chunk_to_b(stacks);
+		else
+			chunk_to_b(stacks);
+		stacks->unsorted = len_unsorted(stacks->a);
+	}
+	if (stacks->unsorted == 2)
+	{
+		if (stacks->a->pos > stacks->a->next->pos)
+			swap(stacks->a, "sa", &stacks->ops);
+	}
+	set_as_sorted(stacks->a, stacks->unsorted);
+	stacks->unsorted = 0;
+}
+
+void	initial_chunk_to_b(t_stacks *stacks)
+{
+	int	closest;
+	int	to_push;
+	int	mid;
+
+	to_push = (chunk_size(stacks->a) - 1) / 2;
+	mid = get_mid(stacks->a);
+	while (to_push > 0)
+	{
+		index_stack(stacks->a);
+		closest = find_closest(stacks->a, mid, chunk_size(stacks->a));
+		if (closest <= mid)
+			rotate(stacks->a, "ra", &stacks->ops, closest);
+		else
+			reverse_rotate(stacks->a, "rra", &stacks->ops, closest);
+		stacks->a->chunk = stacks->chunks;
+		push(stacks, "pb", 1);
+		to_push--;
+	}
+}
+
+void	chunk_to_b(t_stacks *stacks)
+{
+	int	rots;
+	int	to_push;
+	int	mid;
+
+	to_push = (chunk_size(stacks->a) - 1) / 2;
+	mid = get_mid(stacks->a);
+	while (to_push > 0)
+	{
+		rots = 0;
+		while (stacks->a->pos > mid)
+		{
+			rotate(stacks->a, "ra", &stacks->ops, 1);
+			rots++;
+		}
+		stacks->a->chunk = stacks->chunks;
+		push(stacks, "pb", 1);
+		to_push--;
+		reverse_rotate(stacks->a, "rra", &stacks->ops, rots);
+	}
+}
+
+void	push_b_to_a(t_stacks *stacks)
+{
+	int	chunk_len;
+
+	chunk_len = chunk_size(stacks->b);
+	if (chunk_len > 2)
+	{
+		index_stack(stacks->b);
+		chunk_to_a(stacks, (chunk_len - 1) / 2);
+		chunk_len = chunk_size(stacks->b);
+	}
+	else
+	{
+		set_as_sorted(stacks->b, chunk_len);
+		if (chunk_len == 2 && stacks->b->pos < stacks->b->next->pos)
+			swap(stacks->b, "sb", &stacks->ops);
+		push(stacks, "pa", chunk_len);
+		stacks->chunks--;
+	}
+}
+
+void	chunk_to_a(t_stacks *stacks, int to_push)
+{
+	int	rots;
+	int	mid;
+
+	mid = get_mid(stacks->b);
+	while (to_push > 0)
+	{
+		rots = 0;
+		while (stacks->b->pos <= mid)
+		{
+			rotate(stacks->b, "rb", &stacks->ops, 1);
+			rots++;
+		}
+		push(stacks, "pa", 1);
+		to_push--;
+		reverse_rotate(stacks->b, "rrb", &stacks->ops, rots);
+	}
+}
+
+/*
 void	a_to_b(t_stacks *stacks)
 {
 	int		pushed;
@@ -84,10 +203,4 @@ void	b_to_a(t_stacks *stacks)
 	push(stacks, "pa");
 }
 
-void	sort_large(t_stacks *stacks)
-{
-	get_pivots(stacks);
-	a_to_b(stacks);
-	b_to_a(stacks);
-	return ;
-}
+*/
