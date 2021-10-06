@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/22 17:50:39 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/03 19:48:13 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/10/06 19:14:04 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,7 @@ typedef struct s_stacks
 	t_stack	*b;
 	t_stack	*copy;
 	size_t	size;
-	size_t	len_a;
-	size_t	len_b;
-	int		mid_a;
-	int		mid_b;
 	int		ops;
-	int		*pivots;
 	int		chunks;
 }				t_stacks;
 
@@ -75,27 +70,19 @@ void	free_stack(t_stack **stack);
 **	Operations
 */
 
-size_t	do_swap(t_stack **stack);
 void	swap(t_stacks *stacks, char *cmd);
-void	push(t_stacks *stacks, char *cmd);
-void	reverse_rotate(t_stacks *stacks, char *cmd);
-void	rotate(t_stacks *stacks, char *cmd);
-size_t	do_rotate(t_stack **stack);
-size_t	do_reverse_rotate(t_stack **stack);
+void	push(t_stacks *stacks, char *cmd, int count);
+void	reverse_rotate(t_stacks *stacks, char *cmd, int *ops, int count);
+void	rotate(t_stacks *stack, char *cmd, int *ops, int count);
+
 t_stack	*pop_back(t_stack **stack);
 t_stack	*pop_front(t_stack **stack);
 void	push_back(t_stack **stack, t_stack *new);
 void	push_front(t_stack **stack, t_stack *new);
 
-size_t	rotate_count(t_stacks *stacks, size_t count, char *cmd);
-
 /*
 **	Sorting
 */
-
-int		get_pivots(t_stacks *stacks);
-int		make_pivots(t_stacks *stacks, int nr);
-
 
 void	sort_three(t_stacks *stacks);
 void	sort_to_five(t_stacks *stacks);

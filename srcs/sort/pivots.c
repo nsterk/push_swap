@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/09/22 13:28:40 by nsterk        #+#    #+#                 */
-/*   Updated: 2021/09/22 16:05:10 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/09/22 18:54:09 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	get_pivots(t_stacks *stacks)
 {
-
 	if (stacks->size > 7 && stacks->size < 22)
 		return (make_pivots(stacks, 3));
 	else if (stacks->size > 21 && stacks->size < 101)

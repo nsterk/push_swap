@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/01 12:14:44 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/03 22:47:46 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/10/06 19:14:29 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,27 +68,6 @@ void	get_index(t_stacks *stacks)
 
 int	get_mid(t_stack *stack)
 {
-	t_stack	*tmp;
-	int		total;
-	int		sum;
-	int		chunk;
-
-	tmp = stack;
-	total = 0;
-	sum = 0;
-	chunk = tmp->chunk;
-	while (tmp && tmp->chunk == chunk)
-	{
-		sum += tmp->pos;
-		total++;
-		tmp = tmp->next;
-	}
-	return (sum / total);
-}
-
-/*
-int	get_mid(t_stack *stack)
-{
 	int		min;
 	int		max;
 
@@ -98,4 +77,3 @@ int	get_mid(t_stack *stack)
 	max = get_max(stack);
 	return ((min - max) / 2);
 }
-*/
