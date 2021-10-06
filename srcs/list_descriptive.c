@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/07/13 17:42:02 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/07/27 18:02:34 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/10/03 22:30:12 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,3 +70,42 @@ size_t	list_size(t_stack *stack)
 	}
 	return (size);
 }
+
+size_t	chunk_size(t_stack *stack)
+{
+	size_t	size;
+	t_stack	*tmp;
+
+	size = 0;
+	if (stack)
+	{
+		tmp = stack;
+		while (tmp && tmp->chunk == stack->chunk)
+		{
+			size++;
+			tmp = tmp->next;
+		}
+	}
+	return (size);
+}
+
+/*
+size_t	len_unsorted(t_stack *stack)
+{
+	int		size;
+	t_stack	*tmp;
+
+	size = 0;
+	if (stack)
+	{
+		tmp = stack;
+		while (tmp->sorted == 0 && tmp->next != NULL && 
+			tmp->next->chunk == tmp->chunk)
+		{
+			size++;
+			tmp = tmp->next;
+		}
+	}
+	return (size);
+}
+*/

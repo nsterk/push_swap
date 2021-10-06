@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/22 17:50:39 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/09/22 15:47:16 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/10/03 19:48:13 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_stack
 	int				num;
 	int				i;
 	int				pos;
+	int				chunk;
 	struct s_stack	*next;
 }				t_stack;
 
@@ -43,6 +44,7 @@ typedef struct s_stacks
 	int		mid_b;
 	int		ops;
 	int		*pivots;
+	int		chunks;
 }				t_stacks;
 
 /*
@@ -113,6 +115,7 @@ void	exit_error(void);
 void	exit_programme(int status, t_stacks *stacks);
 void	write_command(char *cmd, int *ops);
 void	get_index(t_stacks *stacks);
+int		get_max(t_stack *stack);
 void	index_stack(t_stack *stack);
 t_stack	*get_node(t_stack **stack, int i);
 

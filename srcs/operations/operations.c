@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/30 17:09:21 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/07/21 15:47:28 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/10/03 19:58:07 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,35 @@ void	push(t_stacks *stacks, char *cmd)
 	}
 }
 
+/*
+void	push_a(t_stacks *stacks, int count)
+{
+	while (count > 0)
+	{
+		if (stacks->b != NULL)
+		{
+			push_front(&stacks->a, pop_front(&stacks->b));
+			write_command("pa"", &stacks->ops);
+		}
+		count--;
+	}
+}
+
+void	push_b(t_stacks *stacks, int count)
+{
+	while (count > 0)
+	{
+		if (stacks->a != NULL)
+		{
+			push_front(&stacks->b, pop_front(&stacks->a));
+			write_command("pb"", &stacks->ops);
+		}
+		count--;
+	}
+}
+
+*/
+
 void	rotate(t_stacks *stacks, char *cmd)
 {
 	size_t	i;
@@ -70,3 +99,36 @@ void	reverse_rotate(t_stacks *stacks, char *cmd)
 	if (i)
 		write_command(cmd, &stacks->ops);
 }
+
+/*
+void	rotate(t_stack *stack, int *ops, int count)
+{
+	int	i;
+
+	i = 0;
+	if (!stack || stack->next == NULL)
+		return;
+	while (count > 0)
+	{
+		push_back(stack, pop_front(stack));
+		write_command("ra", ops);
+		count--;
+	}
+}
+
+void	reverse_rotate(t_stacks *stack, int *ops, int count)
+{
+	int	i;
+
+	if (!stack || stack->next == NULL)
+		return;
+	i = 0;
+	while (count > 0)
+	{
+		push_front(stack, pop_back(stack));
+		write_command("rra", ops);
+		count--;
+	}
+}
+
+*/

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   sort.c                                             :+:    :+:            */
+/*   sort_large.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/07/14 17:40:48 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/09/22 15:55:25 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/10/01 19:19:34 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ void	b_to_a(t_stacks *stacks)
 {
 	int		pushed;
 	int		mid;
+	int		max;
 	size_t	i;
 
 	stacks->len_b = list_size(stacks->b);
@@ -114,11 +115,11 @@ void	b_to_a(t_stacks *stacks)
 	while (stacks->len_b > 1)
 	{
 		index_stack(stacks->b);
+		max = get_max(stacks->b);
 		mid = (int)stacks->len_b / 2;
-		stacks->mid_b = get_mid(stacks->b);
+		// stacks->mid_b = get_mid(stacks->b);
 		// stacks->mid_b = (get_node(&stacks->b, mid))->pos;
-		pushed = 0;
-		while (pushed < mid)
+		while (stacks->a->i != max )
 		{
 			if ((stack_last(stacks->b)->pos > stacks->mid_b))
 				reverse_rotate(stacks, "rrb");
