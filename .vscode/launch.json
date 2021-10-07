@@ -9,9 +9,25 @@
 		{
 			"type": "lldb",
 			"request": "launch",
-			"name": "Debug large 2",
+			"name": "Debug 5",
 			"program": "${workspaceFolder}/push_swap",
-			"args": ["3", "6", "9", "7", "1", "10"],
+			"args": ["-1", "2", "-9", "3", "12"],
+			"cwd": "${workspaceFolder}"
+		}
+		{
+			"type": "lldb",
+			"request": "launch",
+			"name": "Debug 3",
+			"program": "${workspaceFolder}/push_swap",
+			"args": ["19", "5", "-2"],
+			"cwd": "${workspaceFolder}"
+		}
+		{
+			"type": "lldb",
+			"request": "launch",
+			"name": "Debug 4",
+			"program": "${workspaceFolder}/push_swap",
+			"args": ["19", "5", "-2", "-3"],
 			"cwd": "${workspaceFolder}"
 		}
 		{

@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/22 17:50:39 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/06 21:19:47 by nsterk        ########   odam.nl         */
+/*   Updated: 2021/10/07 21:17:44 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,10 @@ void	free_stack(t_stack **stack);
 */
 
 void	swap(t_stack *stack, char *cmd, int *ops);
+void	swap_info(t_stack *stack, t_stack *new);
 void	push(t_stacks *stacks, char *cmd, int count);
-void	reverse_rotate(t_stack *stack, char *cmd, int *ops, int count);
-void	rotate(t_stack *stack, char *cmd, int *ops, int count);
+void	reverse_rotate(t_stack **stack, char *cmd, int *ops, int count);
+void	rotate(t_stack **stack, char *cmd, int *ops, int count);
 
 t_stack	*pop_back(t_stack **stack);
 t_stack	*pop_front(t_stack **stack);
@@ -86,6 +87,7 @@ void	push_front(t_stack **stack, t_stack *new);
 **	Sorting
 */
 
+void	selection_sort(t_stack *copy);
 void	sort_three(t_stacks *stacks);
 void	sort_to_five(t_stacks *stacks);
 void	sort_to_seven(t_stacks *stacks);
@@ -100,7 +102,7 @@ void	chunk_to_a(t_stacks *stacks, int to_push);
 int		get_mid(t_stack *stack);
 int		find_closest(t_stack *a, int mid, int len);
 int		closest_from_head(t_stack *a, int mid);
-int		closest_from_tail(t_stack *a, int mid);
+int		closest_from_tail(t_stack *a, int mid, int len);
 void	set_as_sorted(t_stack *stack, int len);
 
 /*

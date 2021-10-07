@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/06 20:21:01 by nsterk        #+#    #+#                 */
-/*   Updated: 2021/10/06 21:24:03 by nsterk        ########   odam.nl         */
+/*   Updated: 2021/10/07 21:49:40 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	find_closest(t_stack *a, int mid, int len)
 	int	steps_from_tail;
 
 	index1 = closest_from_head(a, mid);
-	index2 = closest_from_tail(a, mid);
+	index2 = closest_from_tail(a, mid, len - 1);
 	if (index1 == -1 || index2 == -1)
 		return (-1);
 	steps_from_tail = len - index2;
@@ -68,21 +68,19 @@ int	closest_from_head(t_stack *a, int mid)
 	return (-1);
 }
 
-int	closest_from_tail(t_stack *a, int mid)
+int	closest_from_tail(t_stack *a, int mid, int len)
 {
 	t_stack	*tmp;
-	int		node;
 
 	if (!a)
 		return (-1);
 	tmp = a;
-	node = (int)list_size(a);
-	while (node >= 0)
+	while (len >= 0)
 	{
-		tmp = get_node(&a, node);
+		tmp = get_node(&a, len);
 		if (tmp->pos <= mid)
 			return (tmp->i);
-		node--;
+		len--;
 	}
 	return (-1);
 }

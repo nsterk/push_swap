@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/01 12:48:47 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/06 16:57:14 by nsterk        ########   odam.nl         */
+/*   Updated: 2021/10/07 21:25:26 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	get_max(t_stack *stack)
 		return (0);
 	tmp = stack;
 	max = stack->pos;
-	while (tmp && tmp->chunk == stack->chunk)
+	while (tmp->next && tmp->chunk == stack->chunk)
 	{
 		if (max < tmp->next->pos)
 			max = tmp->next->pos;
@@ -54,7 +54,7 @@ int	get_min(t_stack *stack)
 		return (0);
 	tmp = stack;
 	min = stack->pos;
-	while (tmp && tmp->chunk == stack->chunk)
+	while (tmp->next && tmp->chunk == stack->chunk)
 	{
 		if (min > tmp->next->pos)
 			min = tmp->next->pos;

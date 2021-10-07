@@ -6,13 +6,13 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/01 12:14:44 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/06 20:21:41 by nsterk        ########   odam.nl         */
+/*   Updated: 2021/10/07 13:27:26 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-static void	selection_sort(t_stack *copy)
+void	selection_sort(t_stack *copy)
 {
 	t_stack	*tmp;
 	t_stack	*next;

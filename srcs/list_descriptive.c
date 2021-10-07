@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/07/13 17:42:02 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/06 21:16:14 by nsterk        ########   odam.nl         */
+/*   Updated: 2021/10/07 20:07:45 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ int	len_unsorted(t_stack *stack)
 	size = 0;
 	if (stack)
 	{
+		size = 1;
 		tmp = stack;
 		while (tmp->sorted == 0 && tmp->next != NULL &&	\
 			tmp->next->chunk == tmp->chunk)

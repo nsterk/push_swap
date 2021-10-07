@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/07/14 17:40:48 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/06 21:28:57 by nsterk        ########   odam.nl         */
+/*   Updated: 2021/10/07 21:16:33 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,17 +49,19 @@ void	initial_chunk_to_b(t_stacks *stacks)
 	int	closest;
 	int	to_push;
 	int	mid;
+	int	size;
 
-	to_push = (chunk_size(stacks->a) - 1) / 2;
+	to_push = chunk_size(stacks->a) / 2;
 	mid = get_mid(stacks->a);
 	while (to_push > 0)
 	{
+		size = chunk_size(stacks->a);
 		index_stack(stacks->a);
-		closest = find_closest(stacks->a, mid, chunk_size(stacks->a));
+		closest = find_closest(stacks->a, mid, size);
 		if (closest <= mid)
-			rotate(stacks->a, "ra", &stacks->ops, closest);
+			rotate(&stacks->a, "ra", &stacks->ops, closest);
 		else
-			reverse_rotate(stacks->a, "rra", &stacks->ops, closest);
+			reverse_rotate(&stacks->a, "rra", &stacks->ops, size - closest);
 		stacks->a->chunk = stacks->chunks;
 		push(stacks, "pb", 1);
 		to_push--;
@@ -72,20 +74,20 @@ void	chunk_to_b(t_stacks *stacks)
 	int	to_push;
 	int	mid;
 
-	to_push = (chunk_size(stacks->a) - 1) / 2;
+	to_push = chunk_size(stacks->a) / 2;
 	mid = get_mid(stacks->a);
 	while (to_push > 0)
 	{
 		rots = 0;
 		while (stacks->a->pos > mid)
 		{
-			rotate(stacks->a, "ra", &stacks->ops, 1);
+			rotate(&stacks->a, "ra", &stacks->ops, 1);
 			rots++;
 		}
 		stacks->a->chunk = stacks->chunks;
 		push(stacks, "pb", 1);
 		to_push--;
-		reverse_rotate(stacks->a, "rra", &stacks->ops, rots);
+		reverse_rotate(&stacks->a, "rra", &stacks->ops, rots);
 	}
 }
 
@@ -97,7 +99,7 @@ void	push_b_to_a(t_stacks *stacks)
 	if (chunk_len > 2)
 	{
 		index_stack(stacks->b);
-		chunk_to_a(stacks, (chunk_len - 1) / 2);
+		chunk_to_a(stacks, chunk_len / 2);
 		chunk_len = chunk_size(stacks->b);
 	}
 	else
@@ -121,12 +123,12 @@ void	chunk_to_a(t_stacks *stacks, int to_push)
 		rots = 0;
 		while (stacks->b->pos <= mid)
 		{
-			rotate(stacks->b, "rb", &stacks->ops, 1);
+			rotate(&stacks->b, "rb", &stacks->ops, 1);
 			rots++;
 		}
 		push(stacks, "pa", 1);
 		to_push--;
-		reverse_rotate(stacks->b, "rrb", &stacks->ops, rots);
+		reverse_rotate(&stacks->b, "rrb", &stacks->ops, rots);
 	}
 }
 
