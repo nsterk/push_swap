@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/07/14 17:40:48 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/07 21:16:33 by nsterk        ########   odam.nl         */
+/*   Updated: 2021/10/11 13:56:01 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,20 +51,19 @@ void	initial_chunk_to_b(t_stacks *stacks)
 	int	mid;
 	int	size;
 
-	to_push = chunk_size(stacks->a) / 2;
+	to_push = (stacks->unsorted + 1) / 2;
 	mid = get_mid(stacks->a);
-	while (to_push > 0)
+	while (under_mid_left(stacks->a, mid))
 	{
 		size = chunk_size(stacks->a);
-		index_stack(stacks->a);
+		index_stack(stacks->a, 0);
 		closest = find_closest(stacks->a, mid, size);
-		if (closest <= mid)
+		if (closest <= (size / 2))
 			rotate(&stacks->a, "ra", &stacks->ops, closest);
 		else
 			reverse_rotate(&stacks->a, "rra", &stacks->ops, size - closest);
 		stacks->a->chunk = stacks->chunks;
 		push(stacks, "pb", 1);
-		to_push--;
 	}
 }
 
@@ -74,9 +73,9 @@ void	chunk_to_b(t_stacks *stacks)
 	int	to_push;
 	int	mid;
 
-	to_push = chunk_size(stacks->a) / 2;
+	to_push = (chunk_size(stacks->a) + 1) / 2;
 	mid = get_mid(stacks->a);
-	while (to_push > 0)
+	while (under_mid_left(stacks->a, mid))
 	{
 		rots = 0;
 		while (stacks->a->pos > mid)
@@ -98,7 +97,7 @@ void	push_b_to_a(t_stacks *stacks)
 	chunk_len = chunk_size(stacks->b);
 	if (chunk_len > 2)
 	{
-		index_stack(stacks->b);
+		index_stack(stacks->b, 0);
 		chunk_to_a(stacks, chunk_len / 2);
 		chunk_len = chunk_size(stacks->b);
 	}
@@ -118,10 +117,10 @@ void	chunk_to_a(t_stacks *stacks, int to_push)
 	int	mid;
 
 	mid = get_mid(stacks->b);
-	while (to_push > 0)
+	while (over_mid_left(stacks->b, mid))
 	{
 		rots = 0;
-		while (stacks->b->pos <= mid)
+		while (stacks->b->pos <= mid && over_mid_left(stacks->b, mid))
 		{
 			rotate(&stacks->b, "rb", &stacks->ops, 1);
 			rots++;

@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/22 17:50:39 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/07 21:17:44 by nsterk        ########   odam.nl         */
+/*   Updated: 2021/10/08 18:25:29 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,8 @@ void	chunk_to_b(t_stacks *stacks);
 void	chunk_to_a(t_stacks *stacks, int to_push);
 
 int		get_mid(t_stack *stack);
+int		under_mid_left(t_stack *stack, int mid);
+int		over_mid_left(t_stack *stack, int mid);
 int		find_closest(t_stack *a, int mid, int len);
 int		closest_from_head(t_stack *a, int mid);
 int		closest_from_tail(t_stack *a, int mid, int len);
@@ -115,7 +117,7 @@ void	write_command(char *cmd, int *ops);
 void	get_index(t_stacks *stacks);
 int		get_max(t_stack *stack);
 int		get_min(t_stack *stack);
-void	index_stack(t_stack *stack);
+void	index_stack(t_stack *stack, int initial);
 t_stack	*get_node(t_stack **stack, int i);
 
 /*

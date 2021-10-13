@@ -6,23 +6,11 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/06 20:21:01 by nsterk        #+#    #+#                 */
-/*   Updated: 2021/10/07 21:49:40 by nsterk        ########   odam.nl         */
+/*   Updated: 2021/10/08 18:24:47 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
-
-int	get_mid(t_stack *stack)
-{
-	int		min;
-	int		max;
-
-	if (!stack)
-		return (0);
-	min = get_min(stack);
-	max = get_max(stack);
-	return ((max - min) / 2);
-}
 
 void	set_as_sorted(t_stack *stack, int len)
 {

@@ -17,6 +17,14 @@
 		{
 			"type": "lldb",
 			"request": "launch",
+			"name": "Debug 7",
+			"program": "${workspaceFolder}/push_swap",
+			"args": ["-1", "2", "-9", "3", "12", "-65", "-88"],
+			"cwd": "${workspaceFolder}"
+		}
+		{
+			"type": "lldb",
+			"request": "launch",
 			"name": "Debug 3",
 			"program": "${workspaceFolder}/push_swap",
 			"args": ["19", "5", "-2"],

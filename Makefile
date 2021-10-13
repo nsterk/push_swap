@@ -6,7 +6,7 @@
 #    By: naomisterk <naomisterk@student.codam.nl      +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/06/22 14:26:50 by naomisterk    #+#    #+#                  #
-#    Updated: 2021/10/06 20:20:41 by nsterk        ########   odam.nl          #
+#    Updated: 2021/10/08 18:24:23 by naomisterk    ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ STACK_C		=	stack_handling.c stack_pop.c stack_push.c \
 				stack_utils.c
 SORT_C		=	sort_large.c sort_small.c sort_utils.c selection_sort.c
 OPS_C		=	operations.c operations_utils.c
-UTILS_C		=	utils.c
+UTILS_C		=	utils.c stack_mid.c
 GNL_C		=	get_next_line.c get_next_line_utils.c
 
 STACK_SRCS	=	$(STACK_C:%=$(STACK_PATH)%)

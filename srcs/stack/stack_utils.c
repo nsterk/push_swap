@@ -6,18 +6,18 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/01 12:48:47 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/07 21:25:26 by nsterk        ########   odam.nl         */
+/*   Updated: 2021/10/08 17:04:45 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-void	index_stack(t_stack *stack)
+void	index_stack(t_stack *stack, int initial)
 {
 	size_t	i;
 	t_stack	*tmp;
 
-	i = 0;
+	i = initial;
 	tmp = stack;
 	while (tmp)
 	{
