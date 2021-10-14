@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/07/14 17:40:48 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/11 13:56:01 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/10/14 12:16:21 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,9 @@ void	chunk_to_b(t_stacks *stacks)
 
 	to_push = (chunk_size(stacks->a) + 1) / 2;
 	mid = get_mid(stacks->a);
+	rots = 0;
 	while (under_mid_left(stacks->a, mid))
 	{
-		rots = 0;
 		while (stacks->a->pos > mid)
 		{
 			rotate(&stacks->a, "ra", &stacks->ops, 1);
@@ -86,8 +86,8 @@ void	chunk_to_b(t_stacks *stacks)
 		stacks->a->chunk = stacks->chunks;
 		push(stacks, "pb", 1);
 		to_push--;
-		reverse_rotate(&stacks->a, "rra", &stacks->ops, rots);
 	}
+	reverse_rotate(&stacks->a, "rra", &stacks->ops, rots);
 }
 
 void	push_b_to_a(t_stacks *stacks)
@@ -109,6 +109,7 @@ void	push_b_to_a(t_stacks *stacks)
 		push(stacks, "pa", chunk_len);
 		stacks->chunks--;
 	}
+	stacks->unsorted = len_unsorted(stacks->a);
 }
 
 void	chunk_to_a(t_stacks *stacks, int to_push)
@@ -117,9 +118,9 @@ void	chunk_to_a(t_stacks *stacks, int to_push)
 	int	mid;
 
 	mid = get_mid(stacks->b);
+	rots = 0;
 	while (over_mid_left(stacks->b, mid))
 	{
-		rots = 0;
 		while (stacks->b->pos <= mid && over_mid_left(stacks->b, mid))
 		{
 			rotate(&stacks->b, "rb", &stacks->ops, 1);
@@ -127,8 +128,8 @@ void	chunk_to_a(t_stacks *stacks, int to_push)
 		}
 		push(stacks, "pa", 1);
 		to_push--;
-		reverse_rotate(&stacks->b, "rrb", &stacks->ops, rots);
 	}
+	reverse_rotate(&stacks->b, "rrb", &stacks->ops, rots);
 }
 
 /*

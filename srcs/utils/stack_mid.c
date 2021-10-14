@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/08 18:24:07 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/08 18:35:15 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/10/14 00:13:30 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	under_mid_left(t_stack *stack, int mid)
 	tmp = stack;
 	while (tmp && tmp->chunk == stack->chunk)
 	{
-		if (tmp->pos < mid)
+		if (tmp->pos <= mid)
 			return (1);
 		tmp = tmp->next;
 	}
