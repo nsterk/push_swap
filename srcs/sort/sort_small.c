@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/09/22 15:48:08 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/07 19:49:42 by nsterk        ########   odam.nl         */
+/*   Updated: 2021/10/15 18:21:06 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	sort_three(t_stacks *stacks)
 {
 	if (is_sorted(stacks->a))
 		return ;
-	while (stacks->a->next->next->pos != get_max(stacks->a))
+	while (stacks->a->next->next->pos != get_max(stacks->a, stacks->a->chunk))
 		rotate(&stacks->a, "ra", &stacks->ops, 1);
 	if (stacks->a->pos > stacks->a->next->pos)
 		swap(stacks->a, "sa", &stacks->ops);

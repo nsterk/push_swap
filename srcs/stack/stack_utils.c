@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/01 12:48:47 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/08 17:04:45 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/10/15 18:05:03 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	index_stack(t_stack *stack, int initial)
 	}
 }
 
-int	get_max(t_stack *stack)
+int	get_max(t_stack *stack, int chunk)
 {
 	int		max;
 	t_stack	*tmp;
@@ -36,16 +36,16 @@ int	get_max(t_stack *stack)
 		return (0);
 	tmp = stack;
 	max = stack->pos;
-	while (tmp->next && tmp->chunk == stack->chunk)
+	while (tmp)
 	{
-		if (max < tmp->next->pos)
-			max = tmp->next->pos;
+		if (tmp->chunk == chunk && max < tmp->pos)
+			max = tmp->pos;
 		tmp = tmp->next;
 	}
 	return (max);
 }
 
-int	get_min(t_stack *stack)
+int	get_min(t_stack *stack, int chunk)
 {
 	int		min;
 	t_stack	*tmp;
@@ -54,10 +54,10 @@ int	get_min(t_stack *stack)
 		return (0);
 	tmp = stack;
 	min = stack->pos;
-	while (tmp->next && tmp->chunk == stack->chunk)
+	while (tmp)
 	{
-		if (min > tmp->next->pos)
-			min = tmp->next->pos;
+		if (tmp->chunk == chunk && min > tmp->pos)
+			min = tmp->pos;
 		tmp = tmp->next;
 	}
 	return (min);

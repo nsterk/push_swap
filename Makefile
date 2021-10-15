@@ -6,14 +6,14 @@
 #    By: naomisterk <naomisterk@student.codam.nl      +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/06/22 14:26:50 by naomisterk    #+#    #+#                  #
-#    Updated: 2021/10/08 18:24:23 by naomisterk    ########   odam.nl          #
+#    Updated: 2021/10/15 19:16:23 by naomisterk    ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 # add -Werror to flags & remove -g (ook bij libft)
 NAME		=	push_swap
 CC			=	gcc
-FLAGS		=	-Wall -Wextra -fsanitize=address -g
+FLAGS		=	-Wall -Wextra -g
 MAIN_PATH	=	./srcs/
 STACK_PATH	=	./srcs/stack/
 GNL_PATH	=	./srcs/gnl/
@@ -24,9 +24,10 @@ OPS_PATH	=	./srcs/operations/
 MAIN_C		=	main.c input_validation.c list_descriptive.c
 STACK_C		=	stack_handling.c stack_pop.c stack_push.c \
 				stack_utils.c
-SORT_C		=	sort_large.c sort_small.c sort_utils.c selection_sort.c
+SORT_C		=	sort_large.c sort_small.c sort_utils.c selection_sort.c \
+				push_chunks.c
 OPS_C		=	operations.c operations_utils.c
-UTILS_C		=	utils.c stack_mid.c
+UTILS_C		=	utils.c stack_mid.c find_closest.c find_closest_chunk.c
 GNL_C		=	get_next_line.c get_next_line_utils.c
 
 STACK_SRCS	=	$(STACK_C:%=$(STACK_PATH)%)

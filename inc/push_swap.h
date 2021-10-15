@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/22 17:50:39 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/08 18:25:29 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/10/15 19:32:10 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_stacks
 	t_stack	*copy;
 	size_t	size;
 	int		ops;
+	int		per_chunk;
 	int		chunks;
 	int		unsorted;
 }				t_stacks;
@@ -95,17 +96,26 @@ void	sort_large(t_stacks *stacks);
 void	push_a_to_b(t_stacks *stacks, int initial);
 void	push_b_to_a(t_stacks *stacks);
 
-void	initial_chunk_to_b(t_stacks *stacks);
+void	initial_chunk_to_b(t_stacks *stacks, int chunk);
 void	chunk_to_b(t_stacks *stacks);
-void	chunk_to_a(t_stacks *stacks, int to_push);
+void	chunk_to_a(t_stacks *stacks);
+void	last_chunk_to_a(t_stacks *stacks);
 
-int		get_mid(t_stack *stack);
+int		get_mid(t_stack *stack, int chunk);
 int		under_mid_left(t_stack *stack, int mid);
 int		over_mid_left(t_stack *stack, int mid);
-int		find_closest(t_stack *a, int mid, int len);
-int		closest_from_head(t_stack *a, int mid);
-int		closest_from_tail(t_stack *a, int mid, int len);
+
+int		under_pivot_left(t_stack *stack, int chunk);
+int		chunk_left(t_stack *stack, int chunk);
+
+int		find_closest_chunk(t_stack *stack, int chunk, int len);
+int		find_closest(t_stack *a, int mid, int len, char c);
+int		closest_from_head(t_stack *stack, int mid, char c);
+int		closest_from_tail(t_stack *stack, int mid, int len, char c);
 void	set_as_sorted(t_stack *stack, int len);
+int		how_many_chunks(size_t size);
+void	assign_chunks(t_stacks *stacks, int amount);
+
 
 /*
 **	Utils
@@ -115,8 +125,8 @@ void	exit_error(void);
 void	exit_programme(int status, t_stacks *stacks);
 void	write_command(char *cmd, int *ops);
 void	get_index(t_stacks *stacks);
-int		get_max(t_stack *stack);
-int		get_min(t_stack *stack);
+int		get_max(t_stack *stack, int chunk);
+int		get_min(t_stack *stack, int chunk);
 void	index_stack(t_stack *stack, int initial);
 t_stack	*get_node(t_stack **stack, int i);
 
@@ -126,7 +136,7 @@ t_stack	*get_node(t_stack **stack, int i);
 void	print_list(t_stack **stack);
 size_t	list_size(t_stack *stack);
 int		is_sorted(t_stack *stack);
-int		chunk_size(t_stack *stack);
+int		chunk_size(t_stack *stack, int chunk);
 int		len_unsorted(t_stack *stack);
 
 #endif

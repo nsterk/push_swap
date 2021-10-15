@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/22 17:50:09 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/07 19:49:53 by nsterk        ########   odam.nl         */
+/*   Updated: 2021/10/14 15:54:05 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	main(int argc, char **argv)
 	validate_input(argc, argv, &stacks);
 	choose_sort(&stacks);
 	printf_list(&stacks, TURQ);
-	printf("total nr of operations: %i\n", stacks.ops);
+	// printf("total nr of operations: %i\n", stacks.ops);
 	exit_programme(0, &stacks);
 	return (0);
 }

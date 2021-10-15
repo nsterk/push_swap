@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/06 20:21:01 by nsterk        #+#    #+#                 */
-/*   Updated: 2021/10/14 00:13:54 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/10/15 19:37:23 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,49 +26,37 @@ void	set_as_sorted(t_stack *stack, int len)
 	}
 }
 
-int	find_closest(t_stack *a, int mid, int len)
+int		how_many_chunks(size_t size)
 {
-	int	index1;
-	int	index2;
-	int	steps_from_tail;
-
-	index1 = closest_from_head(a, mid);
-	index2 = closest_from_tail(a, mid, len - 1);
-	if (index1 == -1 || index2 == -1)
-		return (-1);
-	steps_from_tail = len - index2;
-	if (index1 <= steps_from_tail)
-		return (index1);
-	return (index2);
+	if (size < 50)
+		return (3);
+	if (size < 150)
+		return (5);
+	return (7);
 }
 
-int	closest_from_head(t_stack *a, int mid)
+void	assign_chunks(t_stacks *stacks, int amount)
 {
 	t_stack	*tmp;
+	int		pivot;
 
-	tmp = a;
-	while (tmp)
+	if (!stacks || !(stacks->a))
+		return ;
+	tmp = stacks->a;
+	stacks->per_chunk = (int)stacks->size / amount;
+	pivot = stacks->per_chunk;
+	while (amount)
 	{
-		if (tmp->pos <= mid)
-			return (tmp->i);
-		tmp = tmp->next;
-	}
-	return (-1);
-}
-
-int	closest_from_tail(t_stack *a, int mid, int len)
-{
-	t_stack	*tmp;
-
-	if (!a)
-		return (-1);
-	tmp = a;
-	while (len >= 0)
-	{
-		tmp = get_node(&a, len);
-		if (tmp->pos <= mid)
-			return (tmp->i);
-		len--;
-	}
-	return (-1);
+		stacks->chunks++;
+		while (tmp)
+		{
+			if ((amount == 1 && tmp->chunk == -1) || \
+				(tmp->chunk == -1 && tmp->pos <= pivot))
+				tmp->chunk = stacks->chunks;
+			tmp = tmp->next;
+		}
+		tmp = stacks->a;
+		pivot += (stacks->per_chunk + 1);
+		amount--;
+	}	
 }

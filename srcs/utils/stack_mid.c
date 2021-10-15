@@ -6,21 +6,21 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/08 18:24:07 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/14 00:13:30 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/10/15 19:13:07 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-int	get_mid(t_stack *stack)
+int	get_mid(t_stack *stack, int chunk)
 {
 	int		min;
 	int		max;
 
 	if (!stack)
 		return (0);
-	min = get_min(stack);
-	max = get_max(stack);
+	min = get_min(stack, chunk);
+	max = get_max(stack, chunk);
 	return ((max + min) / 2);
 }
 
@@ -32,6 +32,20 @@ int	under_mid_left(t_stack *stack, int mid)
 	while (tmp && tmp->chunk == stack->chunk)
 	{
 		if (tmp->pos <= mid)
+			return (1);
+		tmp = tmp->next;
+	}
+	return (0);
+}
+
+int	chunk_left(t_stack *stack, int chunk)
+{
+	t_stack	*tmp;
+
+	tmp = stack;
+	while (tmp)
+	{
+		if (tmp->chunk == chunk)
 			return (1);
 		tmp = tmp->next;
 	}
