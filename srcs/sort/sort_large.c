@@ -6,17 +6,18 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/07/14 17:40:48 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/15 19:31:42 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/10/16 15:04:39 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
+#include <math.h>
 
 void	sort_large(t_stacks *stacks)
 {
 	int	chunk;
 
-	stacks->chunks = how_many_chunks(stacks->size);
+	stacks->chunks = log2(stacks->size);
 	stacks->unsorted = (int)stacks->size;
 	assign_chunks(stacks, stacks->chunks);
 	chunk = 0;
@@ -28,14 +29,13 @@ void	sort_large(t_stacks *stacks)
 	while (stacks->b)
 	{
 		push_b_to_a(stacks);
-		push_a_to_b(stacks, 0);
+		push_a_to_b(stacks);
 	}
 	return ;
 }
 
-void	push_a_to_b(t_stacks *stacks, int initial)
+void	push_a_to_b(t_stacks *stacks)
 {
-	initial++;
 	while (stacks->unsorted > 2)
 	{
 		chunk_to_b(stacks);

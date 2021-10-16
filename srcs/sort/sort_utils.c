@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/06 20:21:01 by nsterk        #+#    #+#                 */
-/*   Updated: 2021/10/15 19:37:23 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/10/16 15:00:56 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,6 @@ void	set_as_sorted(t_stack *stack, int len)
 		stack->sorted = 1;
 		stack->chunk = -1;
 	}
-}
-
-int		how_many_chunks(size_t size)
-{
-	if (size < 50)
-		return (3);
-	if (size < 150)
-		return (5);
-	return (7);
 }
 
 void	assign_chunks(t_stacks *stacks, int amount)

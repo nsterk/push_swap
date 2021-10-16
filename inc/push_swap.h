@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/22 17:50:39 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/15 19:32:10 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/10/16 15:04:27 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	sort_three(t_stacks *stacks);
 void	sort_to_five(t_stacks *stacks);
 void	sort_to_seven(t_stacks *stacks);
 void	sort_large(t_stacks *stacks);
-void	push_a_to_b(t_stacks *stacks, int initial);
+void	push_a_to_b(t_stacks *stacks);
 void	push_b_to_a(t_stacks *stacks);
 
 void	initial_chunk_to_b(t_stacks *stacks, int chunk);
@@ -113,7 +113,6 @@ int		find_closest(t_stack *a, int mid, int len, char c);
 int		closest_from_head(t_stack *stack, int mid, char c);
 int		closest_from_tail(t_stack *stack, int mid, int len, char c);
 void	set_as_sorted(t_stack *stack, int len);
-int		how_many_chunks(size_t size);
 void	assign_chunks(t_stacks *stacks, int amount);
 
 
