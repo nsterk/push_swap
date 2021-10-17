@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/07/14 17:40:48 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/16 15:04:39 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/10/16 19:09:00 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	push_b_to_a(t_stacks *stacks)
 	chunk_len = chunk_size(stacks->b, stacks->b->chunk);
 	if (chunk_len > 2)
 	{
-		index_stack(stacks->b, 0);
+		index_stack(stacks->b);
 		if (stacks->b->chunk == 0)
 			last_chunk_to_a(stacks);
 		else

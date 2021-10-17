@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/22 17:50:09 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/14 15:54:05 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/10/16 19:07:46 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ static void	choose_sort(t_stacks *stacks)
 	get_index(stacks);
 	if (stacks->size == 2)
 		swap(stacks->a, "sa", &stacks->ops);
-	// else if (stacks->size == 3)
-	// 	sort_three(stacks);
-	// else if (stacks->size <= 5)
-	// 	sort_to_five(stacks);
+	else if (stacks->size == 3)
+		sort_three(stacks);
+	else if (stacks->size <= 5)
+		sort_to_five(stacks);
 	// else if (stacks->size <= 7)
 	// 	sort_to_seven(stacks);
 	else

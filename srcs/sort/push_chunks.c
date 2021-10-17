@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/15 16:37:34 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/15 19:23:06 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/10/16 19:09:21 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,11 @@ void	initial_chunk_to_b(t_stacks *stacks, int chunk)
 {
 	int	closest;
 	int	size;
-	//int	mid;
 
-	//mid = get_mid(stacks->a, chunk);
 	while (chunk_left(stacks->a, chunk))
 	{
 		size = stacks->unsorted;
-		index_stack(stacks->a, 0);
+		index_stack(stacks->a);
 		closest = find_closest_chunk(stacks->a, chunk, size);
 		if (closest <= (size / 2))
 			rotate(&stacks->a, "ra", &stacks->ops, closest);
@@ -85,7 +83,7 @@ void	last_chunk_to_a(t_stacks *stacks)
 	while (over_mid_left(stacks->b, mid))
 	{
 		size = chunk_size(stacks->b, stacks->b->chunk);
-		index_stack(stacks->b, 0);
+		index_stack(stacks->b);
 		closest = find_closest(stacks->b, mid, size, 'b');
 		if (closest <= (size / 2))
 			rotate(&stacks->b, "rb", &stacks->ops, closest);

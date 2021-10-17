@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/01 12:14:44 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/08 17:16:32 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/10/16 19:19:27 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,6 @@ static void	copy_index(t_stacks *stacks)
 void	get_index(t_stacks *stacks)
 {
 	selection_sort(stacks->copy);
-	index_stack(stacks->copy, 0);
+	index_stack(stacks->copy);
 	copy_index(stacks);
 }
