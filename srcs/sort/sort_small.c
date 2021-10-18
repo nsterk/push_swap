@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/09/22 15:48:08 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/17 18:43:15 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/10/18 23:22:58 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,11 @@ void	sort_to_five(t_stacks *stacks)
 		push(stacks, "pa", 1);
 }
 
-// void	sort_to_seven(t_stacks *stacks)
-// {
-// 	while (list_size(stacks->a) > 5)
-// 		push(stacks, "pb", 1);
-// 	sort_to_five(stacks);
-// }
+void	sort_small(t_stacks *stacks)
+{
+	while (list_size(stacks->a) > 3)
+		lowest_to_b(stacks);
+	sort_three(stacks);
+	while (stacks->b)
+		push(stacks, "pa", 1);
+}

@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/22 17:50:09 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/16 19:07:46 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/10/18 23:23:50 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,8 @@ static void	choose_sort(t_stacks *stacks)
 		swap(stacks->a, "sa", &stacks->ops);
 	else if (stacks->size == 3)
 		sort_three(stacks);
-	else if (stacks->size <= 5)
-		sort_to_five(stacks);
-	// else if (stacks->size <= 7)
-	// 	sort_to_seven(stacks);
+	else if (stacks->size <= 9)
+		sort_small(stacks);
 	else
 		sort_large(stacks);
 }
@@ -34,8 +32,6 @@ int	main(int argc, char **argv)
 	init_stacks(&stacks);
 	validate_input(argc, argv, &stacks);
 	choose_sort(&stacks);
-	printf_list(&stacks, TURQ);
-	// printf("total nr of operations: %i\n", stacks.ops);
 	exit_programme(0, &stacks);
 	return (0);
 }

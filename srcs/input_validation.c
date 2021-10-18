@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/22 19:17:06 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/06 21:13:46 by nsterk        ########   odam.nl         */
+/*   Updated: 2021/10/18 23:50:09 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,17 @@ void	validate_input(int argc, char **argv, t_stacks *stacks)
 	int		num;
 	size_t	arg_len;
 
-	if (argc < 2)
-		exit_error();
+	// if (argc < 2)
+	// 	exit_error();
 	i = 1;
 	while (i < argc)
 	{
 		arg_len = ft_strlen(argv[i]);
-		is_integer(argv[i], arg_len);
+		if (not_integer(argv[i], arg_len))
+			exit_programme(1, stacks);
 		num = check_bounds(argv[i], arg_len, stacks);
-		check_duplicates(&stacks->a, num);
+		if (check_duplicates(stacks, num))
+			exit_programme(1, stacks);
 		stack_add_back(&stacks->a, stack_new(num));
 		stack_add_back(&stacks->copy, stack_new(num));
 		i++;
@@ -35,8 +37,6 @@ void	validate_input(int argc, char **argv, t_stacks *stacks)
 		exit_programme(0, stacks);
 	stacks->size = list_size(stacks->a);
 	get_index(stacks);
-	// selection_sort(stacks->copy);
-	// index_stack(&stacks->copy);
 }
 
 int	check_bounds(char *str, size_t len, t_stacks *stacks)
@@ -51,7 +51,7 @@ int	check_bounds(char *str, size_t len, t_stacks *stacks)
 	return (num);
 }
 
-int	is_integer(char *str, size_t len)
+int	not_integer(char *str, size_t len)
 {
 	size_t	i;
 
@@ -61,31 +61,32 @@ int	is_integer(char *str, size_t len)
 	while (i < len)
 	{
 		if (!ft_isdigit(str[i]))
-			exit_error();
+			return (1);
 		i++;
 	}
-	return (1);
+	return (0);
 }
 
-void	check_duplicates(t_stack **head, int num)
+int	check_duplicates(t_stacks *stacks, int num)
 {
 	t_stack	*temp;
 
-	if (*head == NULL)
-		return ;
-	temp = *head;
+	if (!stacks || !stacks->a)
+		return (0);
+	temp = stacks->a;
 	while (temp->next != NULL)
 	{
 		if (temp->num == num)
 		{
-			free_stack(head);
-			exit_error();
+			free_stack(&stacks->a);
+			return (1);
 		}
 		temp = temp->next;
 	}
 	if (temp->num == num)
 	{
-		free_stack(head);
-		exit_error();
+		free_stack(&stacks->a);
+		return (1);
 	}
+	return (0);
 }
