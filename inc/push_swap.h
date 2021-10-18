@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/22 17:50:39 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/19 01:41:34 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/10/19 01:49:54 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,15 +85,18 @@ void	push_front(t_stack **stack, t_stack *new);
 **	Sorting
 */
 
-void	selection_sort(t_stack *copy);
 void	sort_three(t_stacks *stacks);
 void	sort_small(t_stacks *stacks);
 void	sort_large(t_stacks *stacks);
+void	selection_sort(t_stack *copy);
+
 void	push_a_to_b(t_stacks *stacks);
-void	push_b_to_a(t_stacks *stacks);
 
 void	initial_chunk_to_b(t_stacks *stacks, int chunk);
 void	chunk_to_b(t_stacks *stacks);
+
+void	push_b_to_a(t_stacks *stacks);
+
 void	chunk_to_a(t_stacks *stacks);
 void	last_chunk_to_a(t_stacks *stacks);
 
@@ -107,16 +110,21 @@ int		find_closest_chunk(t_stack *stack, int chunk, int len); //used
 int		find_closest(t_stack *a, int mid, int len, char c); //used
 int		closest_from_head(t_stack *stack, int mid, char c); //used
 int		closest_from_tail(t_stack *stack, int mid, int len, char c); //used
-void	set_as_sorted(t_stack *stack, int len); //used
+
+
 void	assign_chunks(t_stacks *stacks, int amount);
 int		where_is_min(t_stack *stack);
-//void	lowest_to_b(t_stacks *stacks);
+
+
+/*
+**	Sorting utils
+*/
+void	set_as_sorted(t_stack *stack, int len); //used
 
 /*
 **	Utils
 */
-void	init_stacks(t_stacks *stacks);
-void	exit_error(void);
+void	init_stacks(t_stacks *stacks); //used
 void	exit_programme(int status, t_stacks *stacks); //used
 void	write_command(char *cmd, int *ops); //used
 void	get_index(t_stacks *stacks); //used

@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/06 20:21:01 by nsterk        #+#    #+#                 */
-/*   Updated: 2021/10/19 01:41:22 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/10/19 01:50:28 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,18 @@ int		where_is_min(t_stack *stack)
 		tmp = tmp->next;
 	}
 	return (i);
+}
+
+int	is_sorted(t_stack *stack)
+{
+	t_stack	*temp;
+
+	temp = stack;
+	while (temp->next != NULL)
+	{
+		if (temp->num >= temp->next->num)
+			return (0);
+		temp = temp->next;
+	}
+	return (1);
 }

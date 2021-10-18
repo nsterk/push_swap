@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/07/13 17:42:02 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/15 19:07:08 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/10/19 01:49:27 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,20 +36,6 @@ void	printf_list(t_stacks *stacks, char *colour)
 	printf("          ");
 	print_list(&stacks->b);
 	printf("\n");
-}
-
-int	is_sorted(t_stack *stack)
-{
-	t_stack	*temp;
-
-	temp = stack;
-	while (temp->next != NULL)
-	{
-		if (temp->num >= temp->next->num)
-			return (0);
-		temp = temp->next;
-	}
-	return (1);
 }
 
 size_t	list_size(t_stack *stack)
