@@ -6,11 +6,63 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/22 19:17:06 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/18 23:50:09 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/10/19 01:39:16 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
+
+static int	not_integer(char *str, size_t len)
+{
+	size_t	i;
+
+	i = 0;
+	if ((str[0] == '-' || str[0] == '+'))
+		i++;
+	while (i < len)
+	{
+		if (!ft_isdigit(str[i]))
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+static int	check_bounds(char *str, size_t len, t_stacks *stacks)
+{
+	int		num;
+	int		i;
+
+	i = 0;
+	num = ft_atoi(str);
+	if (num == 0 && len > 1)
+		exit_programme(1, stacks);
+	return (num);
+}
+
+static int	check_duplicates(t_stacks *stacks, int num)
+{
+	t_stack	*temp;
+
+	if (!stacks || !stacks->a)
+		return (0);
+	temp = stacks->a;
+	while (temp->next != NULL)
+	{
+		if (temp->num == num)
+		{
+			free_stack(&stacks->a);
+			return (1);
+		}
+		temp = temp->next;
+	}
+	if (temp->num == num)
+	{
+		free_stack(&stacks->a);
+		return (1);
+	}
+	return (0);
+}
 
 void	validate_input(int argc, char **argv, t_stacks *stacks)
 {
@@ -37,56 +89,4 @@ void	validate_input(int argc, char **argv, t_stacks *stacks)
 		exit_programme(0, stacks);
 	stacks->size = list_size(stacks->a);
 	get_index(stacks);
-}
-
-int	check_bounds(char *str, size_t len, t_stacks *stacks)
-{
-	int		num;
-	int		i;
-
-	i = 0;
-	num = ft_atoi(str);
-	if (num == 0 && len > 1)
-		exit_programme(1, stacks);
-	return (num);
-}
-
-int	not_integer(char *str, size_t len)
-{
-	size_t	i;
-
-	i = 0;
-	if ((str[0] == '-' || str[0] == '+'))
-		i++;
-	while (i < len)
-	{
-		if (!ft_isdigit(str[i]))
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-int	check_duplicates(t_stacks *stacks, int num)
-{
-	t_stack	*temp;
-
-	if (!stacks || !stacks->a)
-		return (0);
-	temp = stacks->a;
-	while (temp->next != NULL)
-	{
-		if (temp->num == num)
-		{
-			free_stack(&stacks->a);
-			return (1);
-		}
-		temp = temp->next;
-	}
-	if (temp->num == num)
-	{
-		free_stack(&stacks->a);
-		return (1);
-	}
-	return (0);
 }

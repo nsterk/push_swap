@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/22 17:50:39 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/18 23:36:35 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/10/19 01:41:34 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,6 @@ typedef struct s_stacks
 **	Input validation
 */
 void	validate_input(int argc, char **argv, t_stacks *stacks);
-int		check_bounds(char *str, size_t len, t_stacks *stacks);
-int		not_integer(char *str, size_t len);
-int		check_duplicates(t_stacks *stacks, int num);
 
 /*
 **	TESTING PURPOSES
@@ -104,17 +101,16 @@ int		get_mid(t_stack *stack, int chunk);
 int		under_mid_left(t_stack *stack, int mid);
 int		over_mid_left(t_stack *stack, int mid);
 
-// int		under_pivot_left(t_stack *stack, int chunk);
 int		chunk_left(t_stack *stack, int chunk);
 
-int		find_closest_chunk(t_stack *stack, int chunk, int len);
-int		find_closest(t_stack *a, int mid, int len, char c);
-int		closest_from_head(t_stack *stack, int mid, char c);
-int		closest_from_tail(t_stack *stack, int mid, int len, char c);
-void	set_as_sorted(t_stack *stack, int len);
+int		find_closest_chunk(t_stack *stack, int chunk, int len); //used
+int		find_closest(t_stack *a, int mid, int len, char c); //used
+int		closest_from_head(t_stack *stack, int mid, char c); //used
+int		closest_from_tail(t_stack *stack, int mid, int len, char c); //used
+void	set_as_sorted(t_stack *stack, int len); //used
 void	assign_chunks(t_stacks *stacks, int amount);
 int		where_is_min(t_stack *stack);
-void	lowest_to_b(t_stacks *stacks);
+//void	lowest_to_b(t_stacks *stacks);
 
 /*
 **	Utils
