@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/22 19:22:56 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/08 17:05:37 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/10/20 14:20:03 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,6 @@ void	exit_programme(int status, t_stacks *stacks)
 	if (stacks->b != NULL)
 		free_stack(&stacks->b);
 	//system("leaks push_swap");
-	exit(0);
-}
-
-void	exit_error(void)
-{
-	write(2, "Error\n", 6);
-	system("leaks push_swap");
 	exit(0);
 }
 

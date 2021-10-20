@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/22 17:50:39 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/19 01:49:54 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/10/20 13:44:00 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <libft.h>
-# include <colours.h>
 
 /*
 **	includes to be removed at later stage: 
@@ -50,11 +49,6 @@ typedef struct s_stacks
 */
 void	validate_input(int argc, char **argv, t_stacks *stacks);
 
-/*
-**	TESTING PURPOSES
-*/
-
-void	printf_list(t_stacks *stack, char *colour);
 
 /*
 ** Stack handling
@@ -136,10 +130,11 @@ t_stack	*get_node(t_stack **stack, int i); //checked, is being used
 /*
 **	Utils: list descriptions
 */
-void	print_list(t_stack **stack);
+
 size_t	list_size(t_stack *stack);
-int		is_sorted(t_stack *stack);
 int		chunk_size(t_stack *stack, int chunk); //checked, is being used
-int		len_unsorted(t_stack *stack); //checked, is being used
+int		unsorted_size(t_stack *stack); //checked, is being used
+
+int		is_sorted(t_stack *stack);
 
 #endif

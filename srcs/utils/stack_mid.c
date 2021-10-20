@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/08 18:24:07 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/15 19:13:07 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/10/20 14:19:02 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	get_mid(t_stack *stack, int chunk)
 
 int	under_mid_left(t_stack *stack, int mid)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	tmp = stack;
 	while (tmp && tmp->chunk == stack->chunk)
@@ -54,7 +54,7 @@ int	chunk_left(t_stack *stack, int chunk)
 
 int	over_mid_left(t_stack *stack, int mid)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	tmp = stack;
 	while (tmp && tmp->chunk == stack->chunk)

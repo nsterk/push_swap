@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/06 20:21:01 by nsterk        #+#    #+#                 */
-/*   Updated: 2021/10/19 01:50:28 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/10/20 14:20:42 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ void	assign_chunks(t_stacks *stacks, int amount)
 	}	
 }
 
-int		where_is_min(t_stack *stack)
+int	where_is_min(t_stack *stack)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 	int		min;
 	int		i;
 

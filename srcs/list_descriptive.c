@@ -6,37 +6,11 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/07/13 17:42:02 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/19 01:49:27 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/10/20 14:21:20 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
-#include <colours.h>
-
-void	print_list(t_stack **stack)
-{
-	t_stack	*temp;
-
-	temp = *stack;
-	while (temp != NULL)
-	{
-		if (temp->next != NULL)
-			printf("num: %i, ", (temp)->num);
-		else
-			printf("num: %i", (temp)->num);
-		temp = (temp)->next;
-	}
-}
-
-void	printf_list(t_stacks *stacks, char *colour)
-{
-	printf("%s\n", colour);
-	printf("%-27s%-25s\n"RST, "Stack A", "Stack B");
-	print_list(&stacks->a);
-	printf("          ");
-	print_list(&stacks->b);
-	printf("\n");
-}
 
 size_t	list_size(t_stack *stack)
 {
@@ -46,9 +20,8 @@ size_t	list_size(t_stack *stack)
 	size = 0;
 	if (stack)
 	{
-		size = 1;
 		tmp = stack;
-		while (tmp->next != NULL)
+		while (tmp)
 		{
 			size++;
 			tmp = tmp->next;
@@ -76,7 +49,7 @@ int	chunk_size(t_stack *stack, int chunk)
 	return (size);
 }
 
-int	len_unsorted(t_stack *stack)
+int	unsorted_size(t_stack *stack)
 {
 	int		size;
 	t_stack	*tmp;

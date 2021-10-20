@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/15 16:37:34 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/16 19:09:21 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/10/20 14:20:24 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,8 @@ void	initial_chunk_to_b(t_stacks *stacks, int chunk)
 			reverse_rotate(&stacks->a, "rra", &stacks->ops, size - closest);
 		stacks->a->chunk = chunk;
 		push(stacks, "pb", 1);
-		stacks->unsorted = len_unsorted(stacks->a);
+		stacks->unsorted = unsorted_size(stacks->a);
 	}
-
 }
 
 void	chunk_to_b(t_stacks *stacks)

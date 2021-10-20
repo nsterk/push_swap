@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/07/14 17:40:48 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/16 19:09:00 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/10/20 13:44:23 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	push_a_to_b(t_stacks *stacks)
 	while (stacks->unsorted > 2)
 	{
 		chunk_to_b(stacks);
-		stacks->unsorted = len_unsorted(stacks->a);
+		stacks->unsorted = unsorted_size(stacks->a);
 	}
 	if (stacks->unsorted == 2)
 	{
@@ -72,5 +72,5 @@ void	push_b_to_a(t_stacks *stacks)
 		push(stacks, "pa", chunk_len);
 		stacks->chunks--;
 	}
-	stacks->unsorted = len_unsorted(stacks->a);
+	stacks->unsorted = unsorted_size(stacks->a);
 }

@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/15 19:16:08 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/15 19:24:19 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/10/20 14:19:45 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int	closest_chunk_from_tail(t_stack *stack, int chunk, int len)
 	return (-1);
 }
 
-int		find_closest_chunk(t_stack *stack, int chunk, int len)
+int	find_closest_chunk(t_stack *stack, int chunk, int len)
 {
 	int	index1;
 	int	index2;

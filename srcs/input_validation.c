@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/22 19:17:06 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/19 01:50:19 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/10/20 14:24:08 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ void	validate_input(int argc, char **argv, t_stacks *stacks)
 	int		num;
 	size_t	arg_len;
 
-	// if (argc < 2)
-	// 	exit_error();
+	if (argc < 2)
+		exit_programme(0, stacks);
 	i = 1;
 	while (i < argc)
 	{
