@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/22 19:17:06 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/20 14:24:08 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/10/20 21:07:15 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,12 @@ void	validate_input(int argc, char **argv, t_stacks *stacks)
 	int		i;
 	int		num;
 	size_t	arg_len;
+	t_stack	*copy;
 
 	if (argc < 2)
 		exit_programme(0, stacks);
 	i = 1;
+	copy = NULL;
 	while (i < argc)
 	{
 		arg_len = ft_strlen(argv[i]);
@@ -82,11 +84,12 @@ void	validate_input(int argc, char **argv, t_stacks *stacks)
 		if (check_duplicates(stacks, num))
 			exit_programme(1, stacks);
 		stack_add_back(&stacks->a, stack_new(num));
-		stack_add_back(&stacks->copy, stack_new(num));
+		stack_add_back(&copy, stack_new(num));
 		i++;
 	}
 	if (is_sorted(stacks->a))
 		exit_programme(0, stacks);
 	stacks->size = list_size(stacks->a);
-	get_index(stacks);
+	get_index(stacks, copy);
+	free_stack(&copy);
 }

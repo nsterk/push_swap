@@ -1,42 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   stack_utils.c                                      :+:    :+:            */
+/*   utils.c                                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/08/01 12:48:47 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/20 19:39:33 by naomisterk    ########   odam.nl         */
+/*   Created: 2021/06/22 19:22:56 by naomisterk    #+#    #+#                 */
+/*   Updated: 2021/10/20 20:21:58 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
+#include <unistd.h>
 
-t_stack	*get_node(t_stack **stack, int i)
+void	exit_programme(int status, t_stacks *stacks)
 {
-	t_stack	*tmp;
-
-	tmp = *stack;
-	while (tmp)
-	{
-		if (tmp->i == i)
-			return (tmp);
-		tmp = tmp->next;
-	}
-	return (tmp);
+	if (status)
+		write(2, "Error\n", 6);
+	if (stacks->a != NULL)
+		free_stack(&stacks->a);
+	if (stacks->b != NULL)
+		free_stack(&stacks->b);
+	//system("leaks push_swap");
+	exit(0);
 }
 
-void	index_stack(t_stack *stack)
-{
-	size_t	i;
-	t_stack	*tmp;
-
-	i = 0;
-	tmp = stack;
-	while (tmp)
-	{
-		tmp->i = i;
-		i++;
-		tmp = tmp->next;
-	}
-}

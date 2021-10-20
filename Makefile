@@ -6,7 +6,7 @@
 #    By: naomisterk <naomisterk@student.codam.nl      +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/06/22 14:26:50 by naomisterk    #+#    #+#                  #
-#    Updated: 2021/10/15 19:16:23 by naomisterk    ########   odam.nl          #
+#    Updated: 2021/10/20 21:05:38 by naomisterk    ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,24 +17,20 @@ FLAGS		=	-Wall -Wextra -g
 MAIN_PATH	=	./srcs/
 STACK_PATH	=	./srcs/stack/
 GNL_PATH	=	./srcs/gnl/
-SORT_PATH	=	./srcs/sort/
-UTILS_PATH	=	./srcs/utils/
-OPS_PATH	=	./srcs/operations/
+SORT_PATH	=	./srcs/sort_utils/
 
-MAIN_C		=	main.c input_validation.c list_descriptive.c
-STACK_C		=	stack_handling.c stack_pop.c stack_push.c \
-				stack_utils.c
-SORT_C		=	sort_large.c sort_small.c sort_utils.c selection_sort.c \
-				push_chunks.c
-OPS_C		=	operations.c operations_utils.c
-UTILS_C		=	utils.c stack_mid.c find_closest.c find_closest_chunk.c
-GNL_C		=	get_next_line.c get_next_line_utils.c
+MAIN_C		=	main.c input_validation.c utils.c \
+				sort_small.c sort_large.c \
+				operations.c operations_utils.c
+STACK_C		=	stack_handling.c stack_push_pop.c stack_utils.c
+SORT_C		=	find_closest.c general_sort_utils.c mid_value.c \
+				min_max_values.c selection_sort.c \
+				chunks/push_chunks.c chunks/find_closest_chunk.c \
+# GNL_C		=	get_next_line.c get_next_line_utils.c
 
-STACK_SRCS	=	$(STACK_C:%=$(STACK_PATH)%)
 MAIN_SRCS	=	$(MAIN_C:%=$(MAIN_PATH)%)
+STACK_SRCS	=	$(STACK_C:%=$(STACK_PATH)%)
 SORT_SRCS	=	$(SORT_C:%=$(SORT_PATH)%)
-UTILS_SRCS	=	$(UTILS_C:%=$(UTILS_PATH)%)
-OPS_SRCS	=	$(OPS_C:%=$(OPS_PATH)%)
 # GNL_SRCS	=	$(GNL_C:%=$(GNL_PATH)%)
 SRCS		=	$(MAIN_SRCS) $(STACK_SRCS) $(SORT_SRCS) $(UTILS_SRCS) $(OPS_SRCS) # $(GNL_SRCS)
 OBJS		=	$(SRCS:%.c=%.o)

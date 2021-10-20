@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/22 17:50:39 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/20 13:44:00 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/10/20 21:07:41 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ typedef struct s_stacks
 {
 	t_stack	*a;
 	t_stack	*b;
-	t_stack	*copy;
 	size_t	size;
 	int		ops;
 	int		per_chunk;
@@ -98,7 +97,7 @@ int		get_mid(t_stack *stack, int chunk);
 int		under_mid_left(t_stack *stack, int mid);
 int		over_mid_left(t_stack *stack, int mid);
 
-int		chunk_left(t_stack *stack, int chunk);
+//int		chunk_left(t_stack *stack, int chunk);
 
 int		find_closest_chunk(t_stack *stack, int chunk, int len); //used
 int		find_closest(t_stack *a, int mid, int len, char c); //used
@@ -106,7 +105,7 @@ int		closest_from_head(t_stack *stack, int mid, char c); //used
 int		closest_from_tail(t_stack *stack, int mid, int len, char c); //used
 
 
-void	assign_chunks(t_stacks *stacks, int amount);
+// void	assign_chunks(t_stacks *stacks, int amount);
 int		where_is_min(t_stack *stack);
 
 
@@ -118,10 +117,9 @@ void	set_as_sorted(t_stack *stack, int len); //used
 /*
 **	Utils
 */
-void	init_stacks(t_stacks *stacks); //used
 void	exit_programme(int status, t_stacks *stacks); //used
 void	write_command(char *cmd, int *ops); //used
-void	get_index(t_stacks *stacks); //used
+void	get_index(t_stacks *stacks, t_stack *copy); //used
 int		get_max(t_stack *stack, int chunk); //used
 int		get_min(t_stack *stack, int chunk); //used
 void	index_stack(t_stack *stack); //being used

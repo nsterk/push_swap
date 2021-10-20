@@ -1,42 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   stack_utils.c                                      :+:    :+:            */
+/*   stack_mid.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/08/01 12:48:47 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/20 19:39:33 by naomisterk    ########   odam.nl         */
+/*   Created: 2021/10/08 18:24:07 by naomisterk    #+#    #+#                 */
+/*   Updated: 2021/10/20 15:33:15 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-t_stack	*get_node(t_stack **stack, int i)
+int	get_mid(t_stack *stack, int chunk)
 {
-	t_stack	*tmp;
+	int		min;
+	int		max;
 
-	tmp = *stack;
-	while (tmp)
-	{
-		if (tmp->i == i)
-			return (tmp);
-		tmp = tmp->next;
-	}
-	return (tmp);
+	if (!stack)
+		return (0);
+	min = get_min(stack, chunk);
+	max = get_max(stack, chunk);
+	return ((max + min) / 2);
 }
 
-void	index_stack(t_stack *stack)
+int	under_mid_left(t_stack *stack, int mid)
 {
-	size_t	i;
 	t_stack	*tmp;
 
-	i = 0;
 	tmp = stack;
-	while (tmp)
+	while (tmp && tmp->chunk == stack->chunk)
 	{
-		tmp->i = i;
-		i++;
+		if (tmp->pos <= mid)
+			return (1);
 		tmp = tmp->next;
 	}
+	return (0);
+}
+
+int	over_mid_left(t_stack *stack, int mid)
+{
+	t_stack	*tmp;
+
+	tmp = stack;
+	while (tmp && tmp->chunk == stack->chunk)
+	{
+		if (tmp->pos > mid)
+			return (1);
+		tmp = tmp->next;
+	}
+	return (0);
 }
