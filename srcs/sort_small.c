@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/09/22 15:48:08 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/21 15:57:22 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/10/21 19:37:51 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ static void	lowest_to_b(t_stacks *stacks)
 
 static void	sort_three(t_stacks *stacks)
 {
-	if (is_sorted(stacks->a))
+	if ((stacks->a->num < stacks->a->next->num \
+		&& stacks->a->next->num < stacks->a->next->next->num))
 		return ;
 	while (stacks->a->next->next->pos != get_max(stacks->a, stacks->a->chunk))
 		rotate(&stacks->a, "ra", &stacks->ops, 1);

@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/22 17:50:39 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/21 16:06:37 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/10/21 19:36:34 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ typedef struct s_stacks
 	int		unsorted;
 }				t_stacks;
 
-
 void	validate_input(int argc, char **argv, t_stacks *stacks);
 
 void	sort_small(t_stacks *stacks);
@@ -56,7 +55,7 @@ void	rotate(t_stack **stack, char *cmd, int *ops, int count);
 **	SORT_UTILS
 */
 
-void	selection_sort(t_stacks *stacks, t_stack *copy);
+int		selection_sort(t_stack *a);
 
 int		find_closest_chunk(t_stack *stack, int chunk, int len);
 
@@ -85,8 +84,8 @@ int		get_min(t_stack *stack, int chunk);
 */
 
 t_stack	*stack_new(int num);
-void	stack_add_back(t_stack **stack, t_stack *new);
-void	stack_add_front(t_stack **stack, t_stack *new);
+int		stack_add_back(t_stack **stack, t_stack *new);
+// int		stack_add_front(t_stack **stack, t_stack *new);
 t_stack	*stack_last(t_stack *stack);
 void	free_stack(t_stack **stack);
 
@@ -104,7 +103,7 @@ t_stack	*get_node(t_stack **stack, int i);
 
 void	exit_programme(int status, t_stacks *stacks);
 size_t	ft_strlen(const char *s);
-int		ft_isdigit(int c);
 int		ft_atoi(const char *str);
+int	is_sorted(t_stack *stack);
 
 #endif

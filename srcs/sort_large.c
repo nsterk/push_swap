@@ -6,30 +6,12 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/07/14 17:40:48 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/21 15:53:14 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/10/21 18:19:58 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 #include <math.h>
-
-/*
-**	This sorting algorithm is an adaptation of quicksort.
-**	It works by first pushing log2(n) chunks of numbers to stack B. 
-**	These initial chunks are sorted in ascending order, meaning that
-**	any number in chunk 0 will be lower than any number in chunk 1. Any number
-**	in chunk 1 will be lower than any of the numbers in chunk 2.
-**
-**	At this point we have an empty stack A and a stack B containing log2(n)
-**	number of chunks. The separate chunks are sorted, but the numbers within 
-**	these chunks are not sorted yet.
-**
-**
-**	Within-chunk sorting is done one chunk at a time, by repeatedly splitting the
-**	chunk into two chunks (original chunk and a new chunk), until there are
-**	no more than 2 numbers left in the original chunk. Once this happens, the
-**	remaining numbers are swapped if necessary and set as sorted.
-*/
 
 static void	assign_chunks(t_stacks *stacks, int amount)
 {

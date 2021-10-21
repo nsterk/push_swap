@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/22 19:22:56 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/21 15:49:18 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/10/21 19:57:39 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,6 @@ static const char	*ft_skipspace(const char *str)
 	return (str);
 }
 
-void	exit_programme(int status, t_stacks *stacks)
-{
-	if (status)
-		write(2, "Error\n", 6);
-	if (stacks->a != NULL)
-		free_stack(&stacks->a);
-	if (stacks->b != NULL)
-		free_stack(&stacks->b);
-	exit(0);
-}
-
 size_t	ft_strlen(const char *s)
 {
 	size_t	i;
@@ -42,11 +31,6 @@ size_t	ft_strlen(const char *s)
 			i++;
 	}
 	return (i);
-}
-
-int	ft_isdigit(int c)
-{
-	return (c >= '0' && c <= '9');
 }
 
 int	ft_atoi(const char *str)
@@ -75,4 +59,30 @@ int	ft_atoi(const char *str)
 		str++;
 	}
 	return (num * negative);
+}
+
+void	index_stack(t_stack *stack)
+{
+	size_t	i;
+	t_stack	*tmp;
+
+	i = 0;
+	tmp = stack;
+	while (tmp)
+	{
+		tmp->i = i;
+		i++;
+		tmp = tmp->next;
+	}
+}
+
+void	exit_programme(int status, t_stacks *stacks)
+{
+	if (status)
+		write(2, "Error\n", 6);
+	if (stacks->a != NULL)
+		free_stack(&stacks->a);
+	if (stacks->b != NULL)
+		free_stack(&stacks->b);
+	exit(0);
 }

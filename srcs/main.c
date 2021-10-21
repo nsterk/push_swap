@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/22 17:50:09 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/21 15:56:58 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/10/21 19:40:25 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,22 +22,15 @@ static void	init_stacks(t_stacks *stacks)
 	stacks->unsorted = -1;
 }
 
-// static void	choose_sort(t_stacks *stacks)
-// {
-// 	if (stacks->size == 2)
-// 		swap(stacks->a, "sa", &stacks->ops);
-// 	else if (stacks->size <= 9)
-// 		sort_small(stacks);
-// 	else
-// 		sort_large(stacks);
-// }
-
 int	main(int argc, char **argv)
 {
 	t_stacks	stacks;
 
 	init_stacks(&stacks);
+	if (argc < 2)
+		exit_programme(0, &stacks);
 	validate_input(argc, argv, &stacks);
+	selection_sort(stacks.a);
 	if (stacks.size <= 9)
 		sort_small(&stacks);
 	else

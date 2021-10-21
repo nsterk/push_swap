@@ -6,13 +6,18 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/22 19:17:06 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/21 15:47:42 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/10/21 19:30:11 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-static int	not_integer(char *str, size_t len)
+static int	ft_isdigit(int c)
+{
+	return (c >= '0' && c <= '9');
+}
+
+static void	check_if_integer(char *str, size_t len, t_stacks *stacks)
 {
 	size_t	i;
 
@@ -22,10 +27,9 @@ static int	not_integer(char *str, size_t len)
 	while (i < len)
 	{
 		if (!ft_isdigit(str[i]))
-			return (1);
+			exit_programme(1, stacks);
 		i++;
 	}
-	return (0);
 }
 
 static int	check_bounds(char *str, size_t len, t_stacks *stacks)
@@ -36,32 +40,29 @@ static int	check_bounds(char *str, size_t len, t_stacks *stacks)
 	i = 0;
 	num = ft_atoi(str);
 	if (num == 0 && len > 1)
+	{
+		free_stack(&stacks->a);
 		exit_programme(1, stacks);
+	}
 	return (num);
 }
 
-static int	check_duplicates(t_stacks *stacks, int num)
+static void	check_duplicates(t_stacks *stacks, int num)
 {
-	t_stack	*temp;
+	t_stack	*tmp;
 
 	if (!stacks || !stacks->a)
-		return (0);
-	temp = stacks->a;
-	while (temp->next != NULL)
+		return ;
+	tmp = stacks->a;
+	while (tmp)
 	{
-		if (temp->num == num)
+		if (tmp->num == num)
 		{
 			free_stack(&stacks->a);
-			return (1);
+			exit_programme(1, stacks);
 		}
-		temp = temp->next;
+		tmp = tmp->next;
 	}
-	if (temp->num == num)
-	{
-		free_stack(&stacks->a);
-		return (1);
-	}
-	return (0);
 }
 
 void	validate_input(int argc, char **argv, t_stacks *stacks)
@@ -69,27 +70,19 @@ void	validate_input(int argc, char **argv, t_stacks *stacks)
 	int		i;
 	int		num;
 	size_t	arg_len;
-	t_stack	*copy;
 
-	if (argc < 2)
-		exit_programme(0, stacks);
 	i = 1;
-	copy = NULL;
 	while (i < argc)
 	{
 		arg_len = ft_strlen(argv[i]);
-		if (not_integer(argv[i], arg_len))
-			exit_programme(1, stacks);
+		check_if_integer(argv[i], arg_len, stacks);
 		num = check_bounds(argv[i], arg_len, stacks);
-		if (check_duplicates(stacks, num))
+		check_duplicates(stacks, num);
+		if (!stack_add_back(&stacks->a, stack_new(num)))
 			exit_programme(1, stacks);
-		stack_add_back(&stacks->a, stack_new(num));
-		stack_add_back(&copy, stack_new(num));
 		i++;
 	}
 	if (is_sorted(stacks->a))
 		exit_programme(0, stacks);
 	stacks->size = list_size(stacks->a);
-	selection_sort(stacks, copy);
-	free_stack(&copy);
 }

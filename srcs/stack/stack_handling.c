@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/29 03:49:25 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/06 21:14:48 by nsterk        ########   odam.nl         */
+/*   Updated: 2021/10/21 19:56:54 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,16 @@ t_stack	*stack_new(int num)
 	new->next = NULL;
 	new->sorted = 0;
 	new->chunk = -1;
+	new->next = NULL;
 	return (new);
 }
 
-void	stack_add_back(t_stack **stack, t_stack *new)
+int	stack_add_back(t_stack **stack, t_stack *new)
 {
 	t_stack	*current;
 
-	if (!stack)
-		return ;
+	if (!stack || !new)
+		return (0);
 	if (*stack == NULL)
 		*stack = new;
 	else
@@ -41,14 +42,7 @@ void	stack_add_back(t_stack **stack, t_stack *new)
 		current = stack_last(*stack);
 		current->next = new;
 	}
-}
-
-void	stack_add_front(t_stack **stack, t_stack *new)
-{
-	if (!stack || !new)
-		return ;
-	new->next = *stack;
-	*stack = new;
+	return (1);
 }
 
 t_stack	*stack_last(t_stack *stack)
@@ -61,6 +55,20 @@ t_stack	*stack_last(t_stack *stack)
 	while (current->next != NULL)
 		current = current->next;
 	return (current);
+}
+
+t_stack	*get_node(t_stack **stack, int i)
+{
+	t_stack	*tmp;
+
+	tmp = *stack;
+	while (tmp)
+	{
+		if (tmp->i == i)
+			return (tmp);
+		tmp = tmp->next;
+	}
+	return (tmp);
 }
 
 void	free_stack(t_stack **stack)
