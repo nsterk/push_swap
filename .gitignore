@@ -52,3 +52,8 @@ Mkfile.old
 dkms.conf
 
 .DS_Store
+
+.vscode/*
+./push_swap_visualizer/*
+directory\ structure.rtf
+push_swap\ checker\ cmd.rtf

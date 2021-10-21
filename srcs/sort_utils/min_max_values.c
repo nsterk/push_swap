@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   min_max_value.c                                    :+:    :+:            */
+/*   min_max_values.c                                   :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/20 19:20:36 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/20 19:21:04 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/10/21 15:57:09 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,27 +46,4 @@ int	get_min(t_stack *stack, int chunk)
 		tmp = tmp->next;
 	}
 	return (min);
-}
-
-int	where_is_min(t_stack *stack)
-{
-	t_stack	*tmp;
-	int		min;
-	int		i;
-
-	if (!stack)
-		return (-1);
-	min = stack->pos;
-	i = 0;
-	tmp = stack;
-	while (tmp)
-	{
-		if (tmp->pos < min)
-		{
-			min = tmp->pos;
-			i = tmp->i;
-		}
-		tmp = tmp->next;
-	}
-	return (i);
 }

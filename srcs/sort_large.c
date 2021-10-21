@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/07/14 17:40:48 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/20 20:43:56 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/10/21 15:53:14 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,28 +57,7 @@ static void	assign_chunks(t_stacks *stacks, int amount)
 	}	
 }
 
-void	sort_large(t_stacks *stacks)
-{
-	int	chunk;
-
-	stacks->chunks = log2(stacks->size);
-	stacks->unsorted = (int)stacks->size;
-	assign_chunks(stacks, stacks->chunks);
-	chunk = 0;
-	while (stacks->a)
-	{
-		initial_chunk_to_b(stacks, chunk);
-		chunk++;
-	}
-	while (stacks->b)
-	{
-		push_b_to_a(stacks);
-		push_a_to_b(stacks);
-	}
-	return ;
-}
-
-void	push_b_to_a(t_stacks *stacks)
+static void	push_b_to_a(t_stacks *stacks)
 {
 	int	chunk_len;
 
@@ -103,7 +82,7 @@ void	push_b_to_a(t_stacks *stacks)
 	stacks->unsorted = unsorted_size(stacks->a);
 }
 
-void	push_a_to_b(t_stacks *stacks)
+static void	push_a_to_b(t_stacks *stacks)
 {
 	while (stacks->unsorted > 2)
 	{
@@ -117,4 +96,25 @@ void	push_a_to_b(t_stacks *stacks)
 	}
 	set_as_sorted(stacks->a, stacks->unsorted);
 	stacks->unsorted = 0;
+}
+
+void	sort_large(t_stacks *stacks)
+{
+	int	chunk;
+
+	stacks->chunks = log2(stacks->size);
+	stacks->unsorted = (int)stacks->size;
+	assign_chunks(stacks, stacks->chunks);
+	chunk = 0;
+	while (stacks->a)
+	{
+		initial_chunk_to_b(stacks, chunk);
+		chunk++;
+	}
+	while (stacks->b)
+	{
+		push_b_to_a(stacks);
+		push_a_to_b(stacks);
+	}
+	return ;
 }

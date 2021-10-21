@@ -6,11 +6,20 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/30 17:09:21 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/07 19:54:11 by nsterk        ########   odam.nl         */
+/*   Updated: 2021/10/21 16:05:24 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
+
+static void	swap_info(t_stack *stack, t_stack *new)
+{
+	stack->num = new->num;
+	stack->i = new->i;
+	stack->pos = new->pos;
+	stack->chunk = new->chunk;
+	stack->sorted = new->sorted;
+}
 
 void	swap(t_stack *stack, char *cmd, int *ops)
 {
@@ -21,7 +30,9 @@ void	swap(t_stack *stack, char *cmd, int *ops)
 	tmp = *stack;
 	swap_info(stack, stack->next);
 	swap_info(stack->next, &tmp);
-	write_command(cmd, ops);
+	write(1, cmd, ft_strlen(cmd));
+	write(1, "\n", 1);
+	ops++;
 }
 
 void	push(t_stacks *stacks, char *cmd, int count)
@@ -33,7 +44,9 @@ void	push(t_stacks *stacks, char *cmd, int count)
 			if (stacks->a != NULL)
 			{
 				push_front(&stacks->b, pop_front(&stacks->a));
-				write_command("pb", &stacks->ops);
+				write(1, cmd, ft_strlen(cmd));
+				write(1, "\n", 1);
+				stacks->ops++;
 			}
 		}
 		else
@@ -41,7 +54,9 @@ void	push(t_stacks *stacks, char *cmd, int count)
 			if (stacks->b != NULL)
 			{
 				push_front(&stacks->a, pop_front(&stacks->b));
-				write_command("pa", &stacks->ops);
+				write(1, cmd, ft_strlen(cmd));
+				write(1, "\n", 1);
+				stacks->ops++;
 			}	
 		}
 		count--;
@@ -55,7 +70,9 @@ void	rotate(t_stack **stack, char *cmd, int *ops, int count)
 	while (count > 0)
 	{
 		push_back(stack, pop_front(stack));
-		write_command(cmd, ops);
+		write(1, cmd, ft_strlen(cmd));
+		write(1, "\n", 1);
+		ops++;
 		count--;
 	}
 }
@@ -67,7 +84,9 @@ void	reverse_rotate(t_stack **stack, char *cmd, int *ops, int count)
 	while (count > 0)
 	{
 		push_front(stack, pop_back(stack));
-		write_command(cmd, ops);
+		write(1, cmd, ft_strlen(cmd));
+		write(1, "\n", 1);
+		ops++;
 		count--;
 	}
 }

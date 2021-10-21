@@ -6,13 +6,13 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/01 12:14:44 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/20 21:03:17 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/10/21 15:47:05 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-void	selection_sort(t_stack *copy)
+static void	do_selection_sort(t_stack *copy)
 {
 	t_stack	*tmp;
 	t_stack	*next;
@@ -59,9 +59,9 @@ static void	copy_index(t_stacks *stacks, t_stack *copy)
 	}
 }
 
-void	get_index(t_stacks *stacks, t_stack *copy)
+void	selection_sort(t_stacks *stacks, t_stack *copy)
 {
-	selection_sort(copy);
+	do_selection_sort(copy);
 	index_stack(copy);
 	copy_index(stacks, copy);
 }

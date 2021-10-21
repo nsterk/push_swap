@@ -6,7 +6,7 @@
 /*   By: naomisterk <naomisterk@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/15 16:37:34 by naomisterk    #+#    #+#                 */
-/*   Updated: 2021/10/20 20:22:47 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/10/21 15:05:16 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,6 @@ static int	chunk_left(t_stack *stack, int chunk)
 	}
 	return (0);
 }
-
-/*
-**	The fi.
-*/
 
 void	initial_chunk_to_b(t_stacks *stacks, int chunk)
 {
@@ -101,7 +97,7 @@ void	last_chunk_to_a(t_stacks *stacks)
 	{
 		size = chunk_size(stacks->b, stacks->b->chunk);
 		index_stack(stacks->b);
-		closest = find_closest(stacks->b, mid, size, 'b');
+		closest = find_closest(stacks->b, mid, size);
 		if (closest <= (size / 2))
 			rotate(&stacks->b, "rb", &stacks->ops, closest);
 		else

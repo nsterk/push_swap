@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/06 20:21:01 by nsterk        #+#    #+#                 */
-/*   Updated: 2021/10/20 20:22:04 by naomisterk    ########   odam.nl         */
+/*   Updated: 2021/10/21 15:02:02 by naomisterk    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,6 @@ int	is_sorted(t_stack *stack)
 	}
 	return (1);
 }
-
-/*
-** The following are functions to retrieve stack/chunk sizes. 
-*/
 
 int	chunk_size(t_stack *stack, int chunk)
 {
