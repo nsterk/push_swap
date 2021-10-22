@@ -6,12 +6,12 @@
 #    By: naomisterk <naomisterk@student.codam.nl      +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/06/22 14:26:50 by naomisterk    #+#    #+#                  #
-#    Updated: 2021/10/21 19:57:52 by naomisterk    ########   odam.nl          #
+#    Updated: 2021/10/21 20:59:59 by naomisterk    ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 # add -Werror to flags & remove -g (ook bij libft)
-NAME		=	push_swap
+NAME		=	push_swap checker
 CC			=	gcc
 FLAGS		=	-Wall -Wextra -Werror -g
 MAIN_PATH	=	./srcs/
@@ -41,12 +41,11 @@ endif
 
 all: $(NAME)
 
-$(NAME): $(SRCS)
-# make bonus -C ./libft
-# cp ./libft/libft.a .
-# libft.a (this belonged to the cmd below, after _Iinc)
-	$(CC) $(SRCS) $(FLAGS) -Iinc -o $(NAME)
+push_swap: $(SRCS)
+	$(CC) $(SRCS) $(FLAGS) -Iinc -o push_swap
 	make clean
+
+checker:
 clean:
 # @ make clean -C ./libft
 	@ rm -rf $(OBJS)
